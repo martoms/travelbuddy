@@ -32,8 +32,7 @@ const bookingSchema = new mongoose.Schema({
                 type : Number
             },
             sex : {
-                type : String,
-                enum : ['Male', 'Female']
+                type : String
             }
         }
     ],

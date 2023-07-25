@@ -11,25 +11,28 @@ const {
 
 // [WITH-GUESTS]
 // Go to Page
-const bookingWithGuests_get = (req, res) => {
-    // Get username
-    getUsername(req.cookies.jwt).then((username) => {
-      res.status(200).json({
-        message: `Hey @${username}, you are now about to book a tour with guests!`
-      });
-    }).catch((err) => {
-      res.status(400).json({
-        message: 'There seems to be a problem accessing the booking page. Please try again later.',
+const bookingWithGuests_get = async (req, res) => {
+  try {
+      // const userId = await getUserId(req.cookies.jwt);
+      let allActiveTourPackages = await TourPackage.find({isActive: true});
+      res.status(200).json(allActiveTourPackages)
+
+  } catch (err) {
+      res.status.json({
+        message: 'There seems to be a problem retrieving all Tour Packages at the moment. Please try again later.',
         error: err.message
-      })
-    })
+      });
+  }
 };
 // Create Booking
 const bookingWithGuests_post = async (req, res) => {
     try {
       // Get userId
-      const userId = await getUserId(req.cookies.jwt);
-
+      /* console.log('req.headers.authorization.split(" ")[1]');
+      console.log(req.headers.authorization) */
+      const userId = await getUserId(req.headers.authorization);
+      console.log('userId')
+      console.log(userId)
       // Get userData
       const {
         username,
@@ -59,11 +62,18 @@ const bookingWithGuests_post = async (req, res) => {
         basePrice,
         bookings,
         tourStarts,
-        tourEnds
+        tourEnds,
+        availableSlots
       } = tourPackage;
 
+      let pax;
       // Get pax
-      const pax = buddies.length + 1;
+      if (buddies[0].fullName === "") {
+        pax = 1;
+      } else {
+        pax = buddies.length + 1;
+      }
+      
       
       // Get tourPrice  
       let tourPrice = calculateWithGuests(pax, basePrice, packageDuration);
@@ -71,18 +81,22 @@ const bookingWithGuests_post = async (req, res) => {
       // Get totalPrice  
       const totalPrice = tourPrice * pax;
 
-      // Check Available Slots
+      // Calculate Total Tourists
       const users = bookings.bookingId.length;
       let joiners = 0;
-      if (bookings.bookingId == 0) {
-      } else {
+      if (bookings.bookingId !== 0) {
+
         for (let id of bookings.bookingId) {
           let booking = await Booking.findById(id);
-          joiners += booking.buddies.length;
+
+          if (booking.buddies.fullName) {
+            joiners += booking.buddies.length;
+          } 
+
         }
       }
       const totalTourists = users + joiners;
-      let availableSlots = 15 - totalTourists
+      
 
       // Create New Booking 
       let newBookingWithGuests;
@@ -107,10 +121,18 @@ const bookingWithGuests_post = async (req, res) => {
         throw Error(`Sorry, your total pax is ${pax}, and the available slot is only ${availableSlots}`)
       }
 
+      // Calculate Slots Left
+      let slotsLeft = availableSlots - totalTourists
+
       // Update tourPackage.bookings
       await TourPackage.findByIdAndUpdate(
         tourPackageId,
-        {$push: {'bookings.bookingId': newBookingWithGuests._id}},
+        {
+          $push: {
+            'bookings.bookingId': newBookingWithGuests._id
+          },
+          $set: { availableSlots: slotsLeft }
+        },
         { new: true });
 
       // Update user.bookings
@@ -138,9 +160,17 @@ const bookingWithGuests_post = async (req, res) => {
    
       // Updated Booking Data
       let newTotalTourists = totalTourists + pax;
-      availableSlots = 15 - newTotalTourists
+      newAvailableSlots = availableSlots - pax
 
-      if (availableSlots === 0) {
+      // Update available slots
+      await TourPackage.findByIdAndUpdate(
+        tourPackageId,
+        {
+          $set: { availableSlots: newAvailableSlots }
+        },
+        { new: true });
+
+      if (newAvailableSlots === 0) {
         // Update tourPackage Active Status
         await TourPackage.findByIdAndUpdate(
           tourPackageId,
@@ -189,18 +219,23 @@ const bookingWithGuests_post = async (req, res) => {
       }
       await sendNotification(userId, notification);
 
+      const tourDates = dateFormat(tourStarts, tourEnds);
+
       res.status(201).json({
-        message: `Congratulations @${user.username}! You have successfully booked a tour!`,
+        username: user.username,
+        message: `You have successfully booked a tour!`,
+        tourDates: tourDates,
         remarks: `${pax} pax has been added.`,
-        'Total Bookings': newTotalTourists,
-        'New Available Slots': availableSlots,
-        'Booking Confirmation': newBookingWithGuests
+        'tourists': newTotalTourists,
+        'slots': newAvailableSlots,
+        'booking': newBookingWithGuests
       });
       
       
     } catch (err) {
       res.status(400).json({
-        error: 'There seems to be a problem booking a tour. Please try again later.',
+        error: `There seems to be a problem. 😥`,
+        line2: `Please try again later.`,
         message: err.message,
         location: err.stack
       });
@@ -209,18 +244,18 @@ const bookingWithGuests_post = async (req, res) => {
   
 // [WITH-FRIENDS]
 // Got to Page
-const bookingWithFriends_get = (req, res) => {
-  // Get username
-  getUsername(req.cookies.jwt).then((username) => {
-    res.status(200).json({
-      message: `Hey @${username}, you are now about to book a tour with friends!`
-    });
-  }).catch((err) => {
-    res.status(400).json({
-      message: 'There seems to be a problem accessing the booking page. Please try again later.',
-      error: err.message
-    })
-  })
+const bookingWithFriends_get = async (req, res) => {
+    try {
+      
+      let allActiveTourPackages = await TourPackage.find({isActive: true});
+      res.status(200).json(allActiveTourPackages)
+
+  } catch (err) {
+      res.status(400).json({
+        message: 'There seems to be a problem retrieving all Tour Packages at the moment. Please try again later.',
+        error: err.message
+      });
+  }
 };
 // Create Booking
 const bookingWithFriends_post = async (req, res) => {
@@ -280,7 +315,7 @@ const bookingWithFriends_post = async (req, res) => {
         // Create new custom tourPackage
         let newCustomTourPackage = await TourPackage.create({
             destination, packageDuration, tourStarts, tourEnds,
-            basePrice, itinerary, inclusions, exclusions
+            basePrice, itinerary, inclusions, exclusions, availableSlots: (30 - (buddies.length + 1))
         })
 
         // new tourPackageId from Custom tourPackage
@@ -401,18 +436,18 @@ const bookingWithFriends_post = async (req, res) => {
 
 // [SOLO]
 // Got to Page
-const bookingSolo_get = (req, res) => {
-    // Get username
-    getUsername(req.cookies.jwt).then((username) => {
-      res.status(200).json({
-        message: `Hey @${username}, you are now about to book a tour solo!`
-      });
-    }).catch((err) => {
+const bookingSolo_get = async (req, res) => {
+    try {
+      
+      let allActiveTourPackages = await TourPackage.find({isActive: true});
+      res.status(200).json(allActiveTourPackages)
+
+  } catch (err) {
       res.status(400).json({
-        message: 'There seems to be a problem accessing the booking page. Please try again later.',
+        message: 'There seems to be a problem retrieving all Tour Packages at the moment. Please try again later.',
         error: err.message
-      })
-    })
+      });
+  }
 };
 // Create Booking
 const bookingSolo_post = async (req, res) => {
@@ -471,7 +506,7 @@ const bookingSolo_post = async (req, res) => {
       // Create new custom tourPackage
       let newCustomTourPackage = await TourPackage.create({
           destination, packageDuration, tourStarts, tourEnds,
-          basePrice, itinerary, inclusions, exclusions
+          basePrice, itinerary, inclusions, exclusions, availableSlots: 0
       })
 
       // new tourPackageId from Custom tourPackage
@@ -496,7 +531,7 @@ const bookingSolo_post = async (req, res) => {
       const pax = 1;
       
       // Get tourPrice and totalPrice  
-      let tourPrice, totalPrice = Math.round((basePrice * (Number(packageDuration.slice(0, 1)))));
+      let tourPrice, totalPrice = Math.round((basePrice * (Number(packageDuration.slice(0, 1)))) * 1.3);
       
       // Create New Booking  
       const newBookingSolo = await Booking.create({

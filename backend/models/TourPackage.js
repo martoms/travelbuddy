@@ -62,6 +62,10 @@ const tourPackageSchema = new mongoose.Schema({
         type : Boolean,
         default : false
     },
+    availableSlots : {
+        type : Number,
+        default : 15
+    },
     bookings : {
         bookingId: {
             type : Array

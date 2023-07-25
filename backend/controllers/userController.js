@@ -15,7 +15,7 @@ const signup_get = (req, res) => {
 const signup_post = (req, res) => {
     // Request Body
     const {
-        firstName, lastName, birthday, sex, contactNo,
+        firstName, lastName, birthday, gender, contactNo,
         address: {region, province, city, barangay},
         username, email, password
     } = req.body;
@@ -35,7 +35,7 @@ const signup_post = (req, res) => {
 
     // Create new user
     User.create({
-        firstName, lastName, birthday, sex, contactNo,
+        firstName, lastName, birthday, gender, contactNo,
         address: {region, province, city, barangay},
         username, email, password: hashedPassword, notifications
     }).then((user) => {
@@ -44,7 +44,8 @@ const signup_post = (req, res) => {
         const token = createAccessToken(user);
         res.cookie('jwt', token, { httpOnly: true, maxAge: maxAge * 1000 })
         res.status(201).json({
-            message : `Congratulations @${user.username}! You are now officially registered.`,
+            username: user.username,
+            message : `You are now officially registered.`,
             access : createAccessToken(user)
         });
         
@@ -86,8 +87,8 @@ const login_post = (req, res) => {
                 maxAge: maxAge * 1000
               });
               res.status(200).json({
-                 mesage : `Login Successful! Welcome back @${user.username}!`,
-                 access : createAccessToken(user)
+                username: user.username,
+                access : createAccessToken(user)
               });
             } else {
               throw Error('Incorrect password.');

@@ -8,74 +8,41 @@ const allDestinations_get = async (req, res) => {
         let isAdmin = await adminPrivilege(req.cookies.jwt);
 
         if (isAdmin) {
-            let allDestinations = await TourPackage.aggregate([
-                {
-                  $match: {} 
-                },
-                {
-                  $group: {
-                    _id: null,
-                    Total: { $sum: 1 },
-                    TourPackages: {
-                      $push: {
-                        id: "$_id",
-                        destination: "$destination",
-                        packageDuration: "$packageDuration",
-                        tourStarts: "$tourStarts",
-                        tourEnds: "$tourEnds",
-                        isTopDestination: "$isTopDestination",
-                        isActive: "$isActive"
-                      }
-                    },
-                  }
-                },
-                {
-                  $project: {
-                    _id: 0,
-                    Total: 1,
-                    "Tour Packages": "$TourPackages"
-                  }
-                }
-              ]);
+            let allTourPackages = await TourPackage.find({});
+
+            // Limit tourPackages to each instance of a particular destination
+            const allDestinations = allTourPackages.reduce((destinationArray, destinationObj) => {
+
+              const exists = destinationArray.some((item) => item.destination === destinationObj.destination);
+
+              if (!exists) {
+                destinationArray.push(destinationObj);
+              }
+
+              return destinationArray;
+            }, []);
+
+            const allDestinationsAlphabetical = allDestinations.sort((a, b) => a.destination.localeCompare(b.destination));
               
-            res.status(200).json({
-                message: 'Here are all the Tour Packages!',
-                'Tour Packages': allDestinations
-            })
+            res.status(200).json(allDestinationsAlphabetical)
         } else {
-            let allActiveDestinations = await TourPackage.aggregate([
-                {
-                  $match: {isActive: true} 
-                },
-                {
-                  $group: {
-                    _id: null,
-                    Total: { $sum: 1 },
-                    TourPackages: {
-                      $push: {
-                        id: "$_id",
-                        destination: "$destination",
-                        packageDuration: "$packageDuration",
-                        tourStarts: "$tourStarts",
-                        tourEnds: "$tourEnds",
-                        isTopDestination: "$isTopDestination",
-                        isActive: "$isActive"
-                      }
-                    },
-                  }
-                },
-                {
-                  $project: {
-                    _id: 0,
-                    Total: 1,
-                    "Tour Packages": "$TourPackages"
-                  }
-                }
-              ]);
-            res.status(200).json({
-                message: 'Here are all the available Tour Packages!',
-                'Tour Packages': allActiveDestinations
-            })
+            let allActiveTourPackages = await TourPackage.find({isActive: true});
+
+            // Limit tourPackages to each instance of a particular destination
+            const destinations = allActiveTourPackages.reduce((destinationArray, destinationObj) => {
+
+              const exists = destinationArray.some((item) => item.destination === destinationObj.destination);
+
+              if (!exists) {
+                destinationArray.push(destinationObj);
+              }
+
+              return destinationArray;
+            }, []);
+
+            const destinationsAlphabetical = destinations.sort((a, b) => a.destination.localeCompare(b.destination));
+
+            res.status(200).json(destinationsAlphabetical)
         }
 
     } catch (err) {

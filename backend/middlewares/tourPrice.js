@@ -1,4 +1,4 @@
-
+  
 // With Guests
 const calculateWithGuests = (pax, basePrice, packageDuration) => {
     switch (pax) {
