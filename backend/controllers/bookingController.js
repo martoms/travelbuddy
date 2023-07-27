@@ -1,7 +1,7 @@
 const User = require('../models/User');
 const Booking = require('../models/Booking');
 const TourPackage = require('../models/TourPackage');
-const {getUserId, getUsername} = require('../middlewares/auth');
+const {getUser, getUsername} = require('../middlewares/auth');
 const { dateFormat } = require('../middlewares/dateFormat');
 const { sendNotification } = require('../middlewares/notifications');
 const {
@@ -13,26 +13,29 @@ const {
 // Go to Page
 const bookingWithGuests_get = async (req, res) => {
   try {
-      // const userId = await getUserId(req.cookies.jwt);
+    // Verify isAdmin
+    const isAdmin = await getUser(req.headers.authorization).isAdmin;
+
+    if (isAdmin) {
+      res.status(200).json(isAdmin)
+    } else {
       let allActiveTourPackages = await TourPackage.find({isActive: true});
       res.status(200).json(allActiveTourPackages)
+    }
 
   } catch (err) {
-      res.status.json({
-        message: 'There seems to be a problem retrieving all Tour Packages at the moment. Please try again later.',
-        error: err.message
-      });
+    res.status.json({
+      message: 'There seems to be a problem retrieving all Tour Packages at the moment. Please try again later.',
+      error: err.message
+    });
   }
 };
 // Create Booking
 const bookingWithGuests_post = async (req, res) => {
     try {
       // Get userId
-      /* console.log('req.headers.authorization.split(" ")[1]');
-      console.log(req.headers.authorization) */
-      const userId = await getUserId(req.headers.authorization);
-      console.log('userId')
-      console.log(userId)
+      const userId = await getUser(req.headers.authorization).id;
+
       // Get userData
       const {
         username,
@@ -159,7 +162,6 @@ const bookingWithGuests_post = async (req, res) => {
       
    
       // Updated Booking Data
-      let newTotalTourists = totalTourists + pax;
       newAvailableSlots = availableSlots - pax
 
       // Update available slots
@@ -219,16 +221,11 @@ const bookingWithGuests_post = async (req, res) => {
       }
       await sendNotification(userId, notification);
 
-      const tourDates = dateFormat(tourStarts, tourEnds);
-
       res.status(201).json({
         username: user.username,
-        message: `You have successfully booked a tour!`,
-        tourDates: tourDates,
         remarks: `${pax} pax has been added.`,
-        'tourists': newTotalTourists,
+        destination: destination,
         'slots': newAvailableSlots,
-        'booking': newBookingWithGuests
       });
       
       
@@ -245,16 +242,18 @@ const bookingWithGuests_post = async (req, res) => {
 // [WITH-FRIENDS]
 // Got to Page
 const bookingWithFriends_get = async (req, res) => {
-    try {
+
+
+  try {
       
-      let allActiveTourPackages = await TourPackage.find({isActive: true});
-      res.status(200).json(allActiveTourPackages)
+    let allTourPackages = await TourPackage.find({});
+    res.status(200).json(allTourPackages)
 
   } catch (err) {
-      res.status(400).json({
-        message: 'There seems to be a problem retrieving all Tour Packages at the moment. Please try again later.',
-        error: err.message
-      });
+    res.status(400).json({
+      message: 'There seems to be a problem retrieving all Tour Packages at the moment. Please try again later.',
+      error: err.message
+    });
   }
 };
 // Create Booking
@@ -262,7 +261,7 @@ const bookingWithFriends_post = async (req, res) => {
     try{
         // [CREATE CUSTOM TRAVEL PACKAGE]
         // Get userId
-        const userId = await getUserId(req.cookies.jwt);
+        const userId = await getUser(req.headers.authorization).id;
 
         // Get userData
         const {
@@ -420,10 +419,9 @@ const bookingWithFriends_post = async (req, res) => {
         await sendNotification(userId, notification);
 
         res.status(201).json({
-            message: `Congratulations @${user.username}! You have successfully booked a tour!`,
-            remarks: `${pax} pax has been booked.`,
-            'Custom Tour Package': newCustomTourPackage,
-            'Booking Confirmation': newBookingWithFriends
+          username: user.username,
+          remarks: `${pax} pax has been booked.`,
+          destination: destination
         });
 
     } catch (err) {
@@ -439,8 +437,8 @@ const bookingWithFriends_post = async (req, res) => {
 const bookingSolo_get = async (req, res) => {
     try {
       
-      let allActiveTourPackages = await TourPackage.find({isActive: true});
-      res.status(200).json(allActiveTourPackages)
+      let allTourPackages = await TourPackage.find({});
+      res.status(200).json(allTourPackages)
 
   } catch (err) {
       res.status(400).json({
@@ -454,7 +452,7 @@ const bookingSolo_post = async (req, res) => {
     try {
       // [CREATE CUSTOM TRAVEL PACKAGE]
       // Get userId
-      const userId = await getUserId(req.cookies.jwt);
+      const userId = await getUser(req.headers.authorization).id;
 
       // Get userData
       const {
@@ -599,9 +597,8 @@ const bookingSolo_post = async (req, res) => {
       await sendNotification(userId, notification);
 
       res.status(201).json({
-          message: `Congratulations @${user.username}! You have successfully booked a tour!`,
-          'Custom Tour Package': newCustomTourPackage,
-          'Booking Confirmation': newBookingSolo
+        username: user.username,
+        destination: destination
       });
       
     } catch (err) {
@@ -617,27 +614,27 @@ const bookingSolo_post = async (req, res) => {
 const userBookings_get = async (req, res) => {
   try {
     // Get userId
-    const userId = await getUserId(req.cookies.jwt);
+    const userId = await getUser(req.headers.authorization).id;
     const user = await User.findById(userId);
 
     // Update the isCompleted field based on tourEnds date
-    for (const booking of user.bookings) {
-      try {
-        if (booking.tourEnds <= new Date()) {
-          booking.isCompleted = true;
-          await user.save();
+    // for (const booking of user.bookings) {
+    //   try {
+    //     if (booking.tourEnds <= new Date()) {
+    //       booking.isCompleted = true;
+    //       await user.save();
 
-          // Also update the Bookings Collection
-          await Booking.findByIdAndUpdate(booking.bookingId, { isCompleted: true });
+    //       // Also update the Bookings Collection
+    //       await Booking.findByIdAndUpdate(booking.bookingId, { isCompleted: true });
           
-        }
-      } catch (err) {
-        return res.status(400).json({
-          message: 'There seems to be a problem updating the Bookings Collection. Please try again later.',
-          error: err.message
-        });
-      }
-    }
+    //     }
+    //   } catch (err) {
+    //     return res.status(400).json({
+    //       message: 'There seems to be a problem updating the Bookings Collection. Please try again later.',
+    //       error: err.message
+    //     });
+    //   }
+    // }
 
     // Filter out completed Tours
     const upcomingTours = user.bookings
@@ -661,14 +658,14 @@ const userBookings_get = async (req, res) => {
     });
 
     res.status(200).json({
-      message: 'Here are your upcoming tours:',
-      'Days left': `There are ${daysLeftArray[0]} days to go before your upcoming tour!`,
+      daysLeft: daysLeftArray[0],
       tours: upcomingTours,
     });
   } catch (err) {
     res.status(400).json({
       message: 'There seems to be a problem retrieving your bookings at the moment. Please try again later.',
-      error: err.message,
+      error: err,
+
     });
   }
 };
@@ -676,7 +673,7 @@ const userBookings_get = async (req, res) => {
 const toursHistory_get = async (req, res) => {
   try {
     // Get userId
-    const userId = await getUserId(req.cookies.jwt);
+    const userId = await getUser(req.headers.authorization).id;
     const user = await User.findById(userId);
 
     // Filter in completed tours only
@@ -714,14 +711,12 @@ const toursHistory_get = async (req, res) => {
     // Check if eligible to add experience...
         // Get userXpIds
         const userXpIds = user.experiences.experienceId
+        
         // Get tourPackages with no user experiences added
         let noUserExperience = tourPackages.filter(package => {
           return !package.experiences.experienceId.some(id => userXpIds.includes(id));
         });
 
-    // Latest finished tour
-    const latest = toursHistory.length - 1;
-      
     if (toursHistory.length === 0) {
       res.status(200).json({
         message: 'It looks empty at the moment. All your completed tours will be shown here.'
@@ -731,17 +726,21 @@ const toursHistory_get = async (req, res) => {
         const notification = {
             title: 'Completed Tour',
             content: {
-                message: `@${user.username}, you just finished a tour in ${toursHistory[latest].destination}! Kindly go to the Tours History and share your experience.`
-            }
+                message: `@${user.username}, you just finished a tour in ${noUserExperience[0].destination}! Kindly go to the Tours History and share your experience.`
+            } 
         }
+        
         await sendNotification(userId, notification);
 
         res.status(200).json({
-        'Tours History': toursHistory,
-        message: `You just finished a new tour in ${toursHistory[latest].destination}! Share your experience now!`
+        details: toursHistory,
+        addExperience: `You just finished a new tour in ${noUserExperience[0].destination}!`,
+        noUserExperience: noUserExperience
       });
     } else {
-      res.status(200).json({ 'Tours History': toursHistory });
+      res.status(200).json({
+        details: toursHistory
+      });
     }
 
 

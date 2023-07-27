@@ -1,6 +1,6 @@
 const User = require('../models/User');
 const bcrypt = require('bcrypt');
-const { getUserId } = require('../middlewares/auth');
+const { getUser } = require('../middlewares/auth');
 const { handleErrs } = require('../middlewares/handleErrs');
 const { maxAge, createAccessToken } = require('../middlewares/createAccessToken');
 const { sendNotification } = require('../middlewares/notifications');
@@ -88,6 +88,7 @@ const login_post = (req, res) => {
               });
               res.status(200).json({
                 username: user.username,
+                isAdmin: user.isAdmin,
                 access : createAccessToken(user)
               });
             } else {
@@ -113,18 +114,23 @@ const login_post = (req, res) => {
 // Go to User Profile
 const profile_get = async (req, res) => {
     try {
-        // Get userId
-        let userId = await getUserId(req.cookies.jwt);
-        let user = await User.findById(userId);
 
-        // Check for booking status in the background
+        // Check if Admin
+        const isAdmin = await getUser(req.headers.authorization).isAdmin
 
+        if (isAdmin) {
+            
+            res.redirect('/users/admin')
+        } else {
+            // Get userId
+            const userId = await getUser(req.headers.authorization).id;
+            const user = await User.findById(userId);
 
-        res.json({
-            message : `Welcome back @${user.username}!`,
-            location : 'User Profile Dashboard',
-            'User Details': user
-        });
+            user.password = '';
+
+            res.status(200).json(user);
+        }
+
     } catch (err) {
         res.status(400).json({
             message : 'Decoding user failed!',
@@ -142,7 +148,7 @@ const changePassword_post = async (req, res) => {
     } = req.body;
 
     // Get userId
-    const userId = await getUserId(req.cookies.jwt);
+    const userId = await getUser(req.headers.authorization).id;
 
     try {
         // Retrieve the user from the database
@@ -202,14 +208,20 @@ const changePassword_post = async (req, res) => {
 // Go to Admin Dashboard
 const admin_get = async (req, res) => {
     try {
-        // Get userId
-        let userId = await getUserId(req.cookies.jwt);
-        let user = await User.findById(userId);
+        // Check if Admin
+        const isAdmin = await getUser(req.headers.authorization).isAdmin
 
-        res.json({
-            message : `Welcome back @${user.username}(admin)!`,
-            location : 'User Admin Profile Dashboard'
-        });
+        if (!isAdmin) {
+            res.redirect('/users/profile')
+        } else {
+            // Get userId
+            const userId = await getUser(req.headers.authorization).id;
+            const user = await User.findById(userId);
+
+            user.password = '';
+
+            res.status(200).json(user);
+        }
     } catch (err) {
         res.status(400).json({
             message : 'Decoding user failed!',
@@ -286,7 +298,7 @@ const makeAdmin_patch = async (req, res) => {
         }
 
         // Send Notification
-        const AdminUserId = await getUserId(req.cookies.jwt);
+        const AdminUserId = await getUser(req.headers.authorization).id;
         const admin = await User.findById(AdminUserId);
         // For Admin
         const adminNotification = {
@@ -333,7 +345,7 @@ const demoteAdmin_patch = async (req, res) => {
         }
 
         // Send Notification
-        const AdminUserId = await getUserId(req.cookies.jwt);
+        const AdminUserId = await getUser(req.headers.authorization).id;
         const admin = await User.findById(AdminUserId);
         // For Admin
         const adminNotification = {

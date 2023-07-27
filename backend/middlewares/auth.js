@@ -13,14 +13,7 @@ const verify = (req, res, next) => {
                   location : 'Redirecting you now to the login page...'
               });
           } else {
-              if (decodedToken.data.isAdmin) {
-                  res.status(403).json({
-                      message : 'It seems that you are an admin!',
-                      location : 'Redirecting you now to the admin dashboard...'
-                  });
-              } else {
-                  next();
-              }
+              next();
           }
       });
   } else {
@@ -60,7 +53,7 @@ const verifyAdmin = (req, res, next) => {
 };
 
 // Get userID
-const getUserId = (token) => {
+const getUser = (token) => {
   if(token){
 
 		token = token.split(' ')[1];
@@ -73,7 +66,7 @@ const getUserId = (token) => {
 
 			} else {
 
-				return jwt.decode(token, {complete:true}).payload.data.id;
+				return jwt.decode(token, {complete:true}).payload.data;
 			};
 
 		})
@@ -126,7 +119,7 @@ const getUsername = async (token) => {
 module.exports = {
     verify,
     verifyAdmin,
-    getUserId,
+    getUser,
     adminPrivilege,
     getUsername
 };
