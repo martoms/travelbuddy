@@ -1,13 +1,35 @@
 const TourPackage = require('../models/TourPackage');
 const User = require('../models/User');
-const { getUserId } = require('../middlewares/auth');
+const { getUser } = require('../middlewares/auth');
 const { sendNotification } = require('../middlewares/notifications');
+
+
+// Admin Get Tourpackages
+const adminTourPackages_get = async (req, res) => {
+    try {
+        // Verify isAdmin
+        const isAdmin = await getUser(req.headers.authorization).isAdmin;
+
+        if (isAdmin) {
+            let allTourPackages = await TourPackage.find({travelPlan: 'with-guests'});
+            res.status(200).json(allTourPackages)
+        } else {
+            res.status(200).json(isAdmin)
+        }
+    
+    } catch (err) {
+    res.status.json({
+        message: 'There seems to be a problem retrieving all Tour Packages at the moment. Please try again later.',
+        error: err.message
+    });
+    }
+};
 
 // Create Tour Package
 const addTourPackage_post = async (req, res) => {
     try {
         // Get userId
-        const userId = await getUserId(req.cookies.jwt);
+        const userId = await getUser(req.headers.authorization).id;
         // Query user
         const user = await User.findById(userId);
 
@@ -82,13 +104,15 @@ const addTourPackage_post = async (req, res) => {
         
         res.status(201).json({
             message : 'Tour Package creation successful!',
+            destination: destination,
+            packageDuration: packageDuration,
             'Tour Package': createdTourPackage
         });
 
     } catch (err) {
         res.status(400).json({ 
             message: 'There seems to be a problem creating a new Tour Package. Please try again later',
-            message: err.message
+            error: err.message
         });
     }
 }
@@ -97,19 +121,20 @@ const addTourPackage_post = async (req, res) => {
 const setTopDestination_patch = async (req, res) => {
     try {
         // Get userId
-        const userId = await getUserId(req.cookies.jwt);
+        const userId = await getUser(req.headers.authorization).id;
         // Query user
         const user = await User.findById(userId);
 
-        const {destinations} = req.body;
+        const { destination } = req.body;
+
         await TourPackage.updateMany(
-            { destination: { $in: destinations } },
+            { destination: destination },
             { $set: { isTopDestination: true } },
             { new: true }
         );
       
         const topDestinations = await TourPackage.find(
-            {destination: { $in: destinations }},
+            { destination },
             { _id: 1, destination: 1, packageDuration: 1, isTopDestination: 1 }
         );
 
@@ -124,7 +149,7 @@ const setTopDestination_patch = async (req, res) => {
         await sendNotification(userId, notification);
 
         res.status(200).json({
-            message: 'You have successfully set new Top Destinations!',
+            username: user.username,
             result: topDestinations
         })
     } catch (err) {
@@ -135,11 +160,54 @@ const setTopDestination_patch = async (req, res) => {
     }
 }
 
+// Set Top Destinations among Tour Packages
+const unsetTopDestination_patch = async (req, res) => {
+    try {
+        // Get userId
+        const userId = await getUser(req.headers.authorization).id;
+        // Query user
+        const user = await User.findById(userId);
+
+        const { destination } = req.body;
+
+        await TourPackage.updateMany(
+            { destination: destination },
+            { $set: { isTopDestination: false } },
+            { new: true }
+        );
+      
+        const topDestinations = await TourPackage.find(
+            { destination: destination },
+            { _id: 1, destination: 1, packageDuration: 1, isTopDestination: 1 }
+        );
+
+        // Send Notification
+        const notification = {
+            title: 'Unset Top Destination',
+            content: {
+                message: `@${user.username}, you have just unset ${destination} from Top Destination!`,
+                'Top Destinations': topDestinations
+            }
+        }
+        await sendNotification(userId, notification);
+
+        res.status(200).json({
+            username: user.username,
+            result: topDestinations
+        })
+    } catch (err) {
+        res.status(400).json({
+            message: 'There seems to be a problem setting new top destinations. Please try again later.',
+            error: err.message
+        })
+    }
+};
+
 // Archive Tour Package
 const archiveTourPackage_patch = async (req, res) => {
     try {
         // Get userId
-        const userId = await getUserId(req.cookies.jwt);
+        const userId = await getUser(req.headers.authorization).id;
         // Query user
         const user = await User.findById(userId);
 
@@ -164,7 +232,7 @@ const archiveTourPackage_patch = async (req, res) => {
         await sendNotification(userId, notification);
 
         res.status(200).json({
-            message: 'You have successfully archived a Tour Package!',
+            username: user.username,
             result: archivedTourPackage
         })
     } catch (err) {
@@ -179,7 +247,7 @@ const archiveTourPackage_patch = async (req, res) => {
 const activateTourPackage_patch = async (req, res) => {
     try {
         // Get userId
-        const userId = await getUserId(req.cookies.jwt);
+        const userId = await getUser(req.headers.authorization).id;
         // Query user
         const user = await User.findById(userId);
 
@@ -204,7 +272,7 @@ const activateTourPackage_patch = async (req, res) => {
         await sendNotification(userId, notification);
 
         res.status(200).json({
-            message: 'You have successfully activated a Tour Package!',
+            username: user.username,
             result: activateTourPackage
         })
     } catch (err) {
@@ -219,7 +287,7 @@ const activateTourPackage_patch = async (req, res) => {
 const updateTourPackage_patch = async (req, res) => {
     try {
         // Get userId
-        const userId = await getUserId(req.cookies.jwt);
+        const userId = await getUser(req.headers.authorization).id;
         // Query user
         const user = await User.findById(userId);
 
@@ -248,7 +316,7 @@ const updateTourPackage_patch = async (req, res) => {
         await sendNotification(userId, notification);
 
         res.status(200).json({
-            message: 'Update Successful!',
+            username: user.username,
             result: updatedTourPackage
         });
 
@@ -262,8 +330,10 @@ const updateTourPackage_patch = async (req, res) => {
 
 // Module Exports
 module.exports = {
+    adminTourPackages_get,
     addTourPackage_post,
     setTopDestination_patch,
+    unsetTopDestination_patch,
     updateTourPackage_patch,
     archiveTourPackage_patch,
     activateTourPackage_patch

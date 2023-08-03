@@ -5,7 +5,7 @@ const TourPackage = require('../models/TourPackage');
 const allDestinations_get = async (req, res) => {
     try {
         // Check Admin Privilege
-        let isAdmin = await adminPrivilege(req.cookies.jwt);
+        let isAdmin = await adminPrivilege(req.params.id);
 
         if (isAdmin) {
             let allTourPackages = await TourPackage.find({});

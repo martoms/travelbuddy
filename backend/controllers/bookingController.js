@@ -618,23 +618,23 @@ const userBookings_get = async (req, res) => {
     const user = await User.findById(userId);
 
     // Update the isCompleted field based on tourEnds date
-    // for (const booking of user.bookings) {
-    //   try {
-    //     if (booking.tourEnds <= new Date()) {
-    //       booking.isCompleted = true;
-    //       await user.save();
+    for (const booking of user.bookings) {
+      try {
+        if (booking.tourEnds <= new Date() && booking.isCompleted === false) {
+          booking.isCompleted = true;
+          await user.save();
 
-    //       // Also update the Bookings Collection
-    //       await Booking.findByIdAndUpdate(booking.bookingId, { isCompleted: true });
+          // Also update the Bookings Collection
+          await Booking.findByIdAndUpdate(booking.bookingId, { isCompleted: true });
           
-    //     }
-    //   } catch (err) {
-    //     return res.status(400).json({
-    //       message: 'There seems to be a problem updating the Bookings Collection. Please try again later.',
-    //       error: err.message
-    //     });
-    //   }
-    // }
+        }
+      } catch (err) {
+        return res.status(400).json({
+          message: 'There seems to be a problem updating the Bookings Collection. Please try again later.',
+          error: err
+        });
+      }
+    }
 
     // Filter out completed Tours
     const upcomingTours = user.bookings
@@ -642,7 +642,7 @@ const userBookings_get = async (req, res) => {
       .sort((a, b) => new Date(a.tourStarts) - new Date(b.tourStarts));
 
     if (upcomingTours.length === 0) {
-      return res.status(400).json({
+      return res.status(200).json({
         message: 'It seems that you do not have any upcoming tours yet. Book a tour now!',
       });
     }
@@ -773,18 +773,18 @@ const allBookings_get = async (req, res) => {
 
       if (bookings.length === 0) {
           res.status(200).json({
-            message: 'It looks like no user has booked any tours yet at the moment.'
+            error: 'It looks like no user has booked any tours yet at the moment.'
           });
       } else {
           // Query Tour Packages Assigned to each booking
           const tourPackagesId = upcomingTours.map(booking => booking.tourPackageId)
           const tourPackages = await TourPackage.find(
                   {_id: {$in: tourPackagesId}},
-                  {_id:1, packageDuration:1, travelPlan:1, tourStarts:1, tourEnds:1}
+                  {_id:1, destination:1, packageDuration:1, travelPlan:1, tourStarts:1, tourEnds:1}
                 );
           if (tourPackages.length === 0) {
             res.status(200).json({
-              message: 'It appears that there are no upcoming bookings yet at the moment.'
+              error: 'It appears that there are no upcoming bookings yet at the moment.'
             });
           } else {
             res.status(200).json(tourPackages);
@@ -792,8 +792,7 @@ const allBookings_get = async (req, res) => {
       }
     } catch (err) {
       res.status(400).json({
-        message: 'It seems like we are having a problem retrieving all bookings at the moment. Please try again later',
-        error: err.message
+        error: 'It seems like we are having a problem retrieving all bookings at the moment. Please try again later'
       })
     }
 };
@@ -885,9 +884,7 @@ const specificBooking_get = async (req, res) => {
         }
       }
 
-      res.status(200).json({
-        tourists: tourists
-      })
+      res.status(200).json(tourists)
 
       // const tourists
     } catch (err) {

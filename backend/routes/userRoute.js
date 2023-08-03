@@ -17,8 +17,10 @@ const {
     logout_get
 } = require('../controllers/userController');
 const {
+    adminTourPackages_get,
     addTourPackage_post,
     setTopDestination_patch,
+    unsetTopDestination_patch,
     updateTourPackage_patch,
     archiveTourPackage_patch,
     activateTourPackage_patch
@@ -63,8 +65,11 @@ router.get('/profile/tours-history', verify, toursHistory_get);
 router.post('/profile/tours-history/share-experience', verify, shareExperience_post);
 
 // [Admin Dashboard]
-router.get('/admin', verifyAdmin, admin_get);
-router.post('/admin/create', verifyAdmin, addTourPackage_post);
+router.get('/admin', verify, admin_get);
+router.get('/admin/tourpackages', verifyAdmin, adminTourPackages_get);
+router.post('/admin/tourpackages/create', verifyAdmin, addTourPackage_post);
+// Change Password
+router.post('/admin/change-password', verifyAdmin, validateChangedPassword, changePassword_post);
 // Notifications
 router.get('/admin/notifications', verifyAdmin, notifications_get);
 router.get('/admin/notifications/:id', verifyAdmin, specificNotification_get);
@@ -76,6 +81,7 @@ router.get('/admin/completed-bookings', verifyAdmin, allCompletedBookings_get);
 router.get('/admin/bookings/:id', verifyAdmin, specificBooking_get);
 // Modify TourPackages
 router.patch('/admin/set-top-destination', verifyAdmin, setTopDestination_patch);
+router.patch('/admin/unset-top-destination', verifyAdmin, unsetTopDestination_patch);
 router.patch('/admin/:id/update-tour-package', verifyAdmin, updateTourPackage_patch);
 router.patch('/admin/:id/archive', verifyAdmin, archiveTourPackage_patch);
 router.patch('/admin/:id/activate', verifyAdmin, activateTourPackage_patch);

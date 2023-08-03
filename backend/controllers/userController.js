@@ -138,7 +138,7 @@ const profile_get = async (req, res) => {
           });
     }
 };
-// Change Password
+// User Change Password
 const changePassword_post = async (req, res) => {
     // Request Body
     const {
@@ -231,38 +231,37 @@ const admin_get = async (req, res) => {
 };
 // Get All Registered Users
 const allUsers_get = (req, res) => {
-    User.aggregate([
-        {
-            $match : {}
-        },
-        {
-            $group : {
-                _id : null,
-                total : {$sum:1},
-                Users : {
-                    $push : {
-                        _id: "$_id",
-                        username : "$username",
-                        firstname : "$firstName",
-                        lastname : "$lastName",
-                        isAdmin : "$isAdmin",
-                        signUpDate: "$signUpDate"
-                    }
-                }
-            }
-        },
-        {
-            $project : {
-                _id: 0,
-                "Total Users": "$total",
-                Users: 1
-            }
-        }
-    ]).then((allUsers) => {
-        res.status(200).json({
-            message: 'All users retreived.',
-            result: allUsers
-        })
+    // User.aggregate([
+    //     {
+    //         $match : {}
+    //     },
+    //     {
+    //         $group : {
+    //             _id : null,
+    //             total : {$sum:1},
+    //             Users : {
+    //                 $push : {
+    //                     _id: "$_id",
+    //                     username : "$username",
+    //                     firstname : "$firstName",
+    //                     lastname : "$lastName",
+    //                     isAdmin : "$isAdmin",
+    //                     signUpDate: "$signUpDate"
+    //                 }
+    //             }
+    //         }
+    //     },
+    //     {
+    //         $project : {
+    //             _id: 0,
+    //             "Total Users": "$total",
+    //             Users: 1
+    //         }
+    //     }
+    // ])
+    User.find({})
+    .then((allUsers) => {
+        res.status(200).json(allUsers)
     }).catch((err) => {
         res.status(400).json({
             message: 'It seems like we are having a problem retrieving all users at this moment',
@@ -318,6 +317,7 @@ const makeAdmin_patch = async (req, res) => {
         await sendNotification(user._id, userNotification);
 
         res.status(200).json({
+            username: user.username,
             message: `Success! @${user.username} is now an Admin!`,
             result: newAdmin
         });
@@ -365,6 +365,7 @@ const demoteAdmin_patch = async (req, res) => {
         await sendNotification(user._id, userNotification);
 
         res.status(200).json({
+            username: user.username,
             message: `Success! @${user.username} is now back to being a regular user!`,
             result: demotedAdmin
         });
@@ -376,15 +377,13 @@ const demoteAdmin_patch = async (req, res) => {
     }
 
 };
+
 // [ADMIN DASHBOARD ENDS]
 
 
 // [LOGOUT]
 const logout_get = (req, res) => {
-    res.json({
-        message : 'You are now logged out!',
-        location : 'Redirecting to the homepage...'
-    });
+    res.cookie('jwt', '', { maxAge: 1 });
 };
 
 // Module Exports

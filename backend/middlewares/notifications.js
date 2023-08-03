@@ -1,5 +1,5 @@
 const User = require('../models/User');
-const { getUserId } = require('../middlewares/auth');
+const { getUser } = require('../middlewares/auth');
 const { handleErrs } = require('./handleErrs');
 
 
@@ -7,7 +7,7 @@ const { handleErrs } = require('./handleErrs');
 const notifications_get = async (req, res) => {
     try {
         // Get userId
-        const userId = await getUserId(req.cookies.jwt);
+        const userId = await getUser(req.headers.authorization).id;
 
         // Query User
         const user = await User.findById(userId);
@@ -51,7 +51,7 @@ const notifications_get = async (req, res) => {
 const specificNotification_get = async (req, res) => {
     try {
         // Get userId
-        const userId = await getUserId(req.cookies.jwt);
+        const userId = await getUser(req.headers.authorization).id;
         // Query User
         const user = await User.findById(userId);
         // Filter specific notification
@@ -88,7 +88,7 @@ const markRead_patch = async (req, res) => {
         // Request Body
         const { selection } = req.body;
         // Get userId
-        const userId = await getUserId(req.cookies.jwt);
+        const userId = await getUser(req.headers.authorization).id;
 
         // Update the isRead value of the notification
         if (selection === undefined) {
@@ -148,7 +148,7 @@ const markUnread_patch = async (req, res) => {
         // Request Body
         const { selection } = req.body;
         // Get userId
-        const userId = await getUserId(req.cookies.jwt);
+        const userId = await getUser(req.headers.authorization).id;
 
         // Update the isRead value of the notification
         if (selection === undefined) {
