@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="58" height="28" viewBox="0 0 58 28">
+  <g id="Group_60" data-name="Group 60" transform="translate(-289 -322)">
+    <g id="Layer_2" data-name="Layer 2" transform="translate(319.685 322.315)">
+      <g id="invisible_box" data-name="invisible box">
+        <rect id="Rectangle_19" data-name="Rectangle 19" width="27" height="28" transform="translate(0.315 -0.315)" fill="none"/>
+      </g>
+      <g id="icons_Q2" data-name="icons Q2" transform="translate(1.154 1.154)">
+        <path id="Path_119" data-name="Path 119" d="M27.378,14.689a12.631,12.631,0,1,0-3.7,8.99A12.689,12.689,0,0,0,27.378,14.689ZM12.267,20.284a1.442,1.442,0,0,1-.461-.981h0V10.075h0a1.442,1.442,0,0,1,.461-.981,1.211,1.211,0,0,1,1.557.231l4.557,4.557a1.1,1.1,0,0,1,0,1.615l-4.557,4.557a1.211,1.211,0,0,1-1.557.231Z" transform="translate(-2 -2)" fill="#ffea20"/>
+      </g>
+    </g>
+    <text id="next" transform="translate(289 341)" fill="#fff" font-size="12" font-family="Gontserrat-Medium, Montserrat" font-weight="500"><tspan x="0" y="0">next</tspan></text>
+  </g>
+</svg>

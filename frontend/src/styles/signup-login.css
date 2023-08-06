@@ -1,0 +1,220 @@
+
+/* == Page Background */
+div#signup.page {
+    background: url('../../public/images/signup.webp') left -400px bottom no-repeat;
+    background-size: cover;
+}
+
+div#login.page {
+    background: url('../../public/images/login.webp') left -200px bottom no-repeat;
+    background-size: cover;
+}
+
+/* Welcome Message */
+#signup > div > h1,
+#login > div > h1 {
+    margin-top: 4rem;
+}
+
+/* Signup Form Background */
+#signupForm,
+#loginForm {
+    background-color: transparent;
+    color: white;
+    border-color: rgba(255, 255, 255, 0.4);
+    backdrop-filter: blur(20px);
+    border-radius: 10px;
+    padding: 2rem;
+    border-style: solid;
+    border-width: 0 2px 2px 0;
+    filter: drop-shadow(2px 2px 10px rgba(0, 0, 0, 0.589));
+    height: auto;
+    overflow-y: auto;
+}
+#signup form {
+    max-height: calc(100vh - 110px);
+}
+
+#signup label,
+#login label {
+    font-weight: 600;
+}
+
+/* Signup H1 */
+#signup form > h1:first-child,
+#login form > h1:first-child {
+    color: white;
+    text-align: center;
+    font-weight: 700;
+}
+
+
+/* Input Fields Margin */
+#signup form div input ~ input:not(:first-child),
+#login form div input ~ input:not(:first-child) {
+    margin-top: 10px;
+}
+
+#signup div.login label ~ label:not(:first-child),
+#login div.login label ~ label:not(:first-child) {
+    margin-top: 10px;
+}
+
+#signup div.login input[id^="signup"],
+#login div.login input[id^="login"] {
+    margin-top: 0;
+}
+
+div.signup-section {
+    margin-top: 10px;
+}
+
+/* Button container */
+/* div.signup-section-prev-next {
+    overflow:auto;
+} */
+
+/* #signup div.button,
+#login div.button {
+    float:right;
+} */
+
+/* Button Size */
+#signup button,
+#login button {
+    padding: 3px 8px;
+    border-radius: 10px;
+    color: var(--darktxt);
+    font-weight: 700;
+}
+
+/* Previous button */
+/* #signup #prevBtn {
+    background-color: white;
+} */
+
+/* Next Button */
+#signup button,
+#login button {
+    background-color: var(--btn1);
+}
+
+/* Login Button size & position */
+#signup button,
+#login button {
+    display: block;
+    width: -moz-fit-content;
+    width: fit-content;
+    margin-top: 1rem;
+    margin-left: auto;
+}
+
+/* Section Indicators */
+/* .signup-section-indicators {
+    display: inline-block;
+    transform: translateY(2rem);
+} */
+
+/* Style the input fields */
+#signup input,
+#login input {
+    display: block;
+    padding: 10px;
+    width: 100%;
+    font-size: 17px;
+    border: 1px solid #aaaaaa;
+    text-overflow: ellipsis;
+}
+
+/* Input Date */
+#signup input[type="date"] {
+    background-color: white;
+    width: 100%;
+    height: 2rem;
+    border-radius: 10px;
+    outline-color: var(--blue1);
+    outline-offset: 0;
+    border: none;
+    padding: 10px;
+    color: var(--darktxt);
+    font-weight: 500;
+}
+
+/* Sex Info */
+#signup div.sex {
+    float: right;
+    width: 41%;
+}
+
+/* Birthday Info */
+#signup div.birthday {
+    float: left;
+    width: 55%;
+}
+
+/* Contact Number */
+#signup label[for="contact-number"] {
+    margin-top: 10px;
+}
+
+/* Address */
+#signup div.region,
+#signup div.province,
+#signup div.city,
+#signup div.barangay {
+    width: 48%;
+}
+
+/* Region | City */
+#signup div.region,
+#signup div.city {
+    float: left;
+}
+
+/* Province | Barangay */
+#signup div.province,
+#signup div.barangay {
+    float: right;
+}
+
+/* Clear-fix */
+.signup-section.address > div {
+    content: "";
+    clear: both;
+    display: table;
+}
+
+.signup-section.address > div:first-child {
+    margin-bottom: 10px;
+}
+
+/* Mark input boxes that gets an error on validation: */
+input.invalid {
+    background-color: #ffdddd;
+}
+  
+  /* Hide all steps by default: */
+/* .signup-section {
+    display: none;
+} */
+  
+  /* Make circles that indicate the steps of the form: */
+/* .step {
+    height: 15px;
+    width: 15px;
+    margin: 0 2px;
+    background-color: white;
+    border: none;
+    border-radius: 50%;
+    display: inline-block;
+} */
+  
+  /* Mark the active step: */
+.step.active {
+    background-color: var(--btn1);
+}
+  
+  /* Mark the steps that are finished and valid: */
+.step.finish {
+    background-color: var(--btn1);
+}

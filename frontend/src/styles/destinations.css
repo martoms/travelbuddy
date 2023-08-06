@@ -1,0 +1,131 @@
+/* == Page title */
+.current-page {
+    display: block;
+    margin: 49.3px auto 2rem auto;
+    color: white;
+    font-weight: 900;
+    text-shadow: 0 0 3px rgba(0, 0, 0, 1.0), 0 0 10px rgba(0, 0, 0, 0.5);
+    text-align: center;
+}
+
+
+/* == Page Background */
+#destinations {
+    background: url('../../public/images/destinations-bg.webp') left -400px bottom no-repeat;
+    background-size: cover;
+}
+
+/* Accordion Maximum Size */
+div.accordion {
+    height: calc(100vh - 200px);
+    overflow-y: scroll;
+}
+
+/* == Accordion Name */
+[id|="destination-name"] h3 {
+    position: relative;
+    top: -10px;
+    z-index: 1;
+    font-family: var(--special);
+    color: var(--blue1);
+    text-shadow:
+            0 0 2px rgba(0, 0, 0, 1.0),
+            0 0 3px rgba(0, 0, 0, 1.0),
+            0 0 5px rgba(0, 0, 0, 1.0),
+            0 0 10px rgba(255, 255, 255, 1),
+            0 0 5px rgba(255, 255, 255, 1);
+}
+
+/* == Accordion Styling */
+.accordion-button {
+    border-radius: 5px;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.accordion-flush .accordion-item .accordion-button,
+.accordion-flush .accordion-item .accordion-button.collapsed,
+.accordion-flush .accordion-item {
+    border-radius: 5px !important;
+}
+
+/* == Image Thumbnails */
+.accordion-button img {
+    border-radius: 5px;
+    position: absolute;
+    width: inherit;
+    max-height: 100%;
+    object-fit: cover;
+}
+
+/* == Dropdown Icons */
+button.accordion-button::after,
+button.accordion-button.collapsed::after {
+    z-index: 1;
+    background-image: url('../../public/images/dropdown.svg') !important;
+    background-size: 30px;
+    height: 30px;
+    width: 30px;
+    font-weight: 600;
+}
+
+/* == image overlay */
+.accordion-button .overlay {
+    border-radius: 5px;
+    position: absolute;
+    width: 100%;
+    height: 100px;
+    background-color: rgba(255, 255, 255, 0.4);
+}
+
+
+/* == Accordion Body */
+#destinations div.accordion-collapse.collapse.show,
+#destinations .accordion-body {
+    color: white;
+    background: transparent;
+    height: 500px;
+    overflow-y: scroll;
+}
+
+div.destination.accordion-item {
+    background-color: rgba(0, 0, 0, 0.4);
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+}
+
+/* Accordion-Body Headers */
+div.accordion-body h2 {
+    color: var(--btn1);
+}
+
+/* Accordion-Body Days */
+div.accordion-body h6 {
+    color: var(--blue1);
+}
+
+/* Book now button */
+.booknow {
+    display: block;
+    width: 80%;
+    text-align: center;
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--darktxt);
+    background-color: var(--btn1);
+    padding: 0.5rem;
+    margin: 0 auto;
+    border-radius: 20px;
+}
+
+/* == Carousel Indicators */
+#destinations .carousel-indicators {
+    margin-bottom: 20px;
+}
+
+/* Carousel Position */
+#destinations .carousel {
+    margin-bottom: 35px;
+}
+

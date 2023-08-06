@@ -1,0 +1,452 @@
+
+/* Page Background */
+#with-friends,
+#with-guests,
+#solo {
+  background: url('../../public/images/booking.webp') left -400px bottom no-repeat !important;
+  background-size: cover !important;
+}
+
+/* == Welcome Message */
+div.page > div > h1 {
+    font-family: var(--special2);
+    text-align: center;
+    font-size: 1.7rem;
+    color: var(--btn1);
+    text-shadow: 0 0 3px rgba(0, 0, 0, 1.0), 0 0 5px rgba(0, 0, 0, 1.0), 0 0 10px rgba(255, 255, 255, 1);
+}
+  
+/* Info Button */
+.travel-options .info {
+    height: 30px;
+    width: auto;
+    top: 3rem;
+    right: 2rem;
+}
+
+/* Travel Options Starts */
+.travel-options {
+    margin-bottom: 2rem;
+}
+
+.travel-options > div {
+    display: block;
+    margin: 5px auto 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.travel-options p {
+    text-align: center;
+    font-size: 0.8rem;
+    color: white;
+    font-weight: 600;
+    margin-bottom: 0;
+}
+
+.travel-options img {
+    width: 100px;
+    height: auto;
+    margin: 0 5px;
+}
+
+
+/* Travel Options Ends */
+
+
+/* Form Starts */
+
+/* Main Layout */
+#with-guests form,
+#with-friends form,
+#solo form {
+    background-color: rgba(0, 0, 0, 0.3);
+    -webkit-backdrop-filter: blur(15px);
+    backdrop-filter: blur(15px);
+    border-radius: 20px;
+    width: auto;
+    max-height: 67vh;
+    overflow: auto;
+    display: flex;
+    flex-direction: column;
+    color: white;
+    padding: 2rem;
+}
+
+/* == Sections */
+form .section {
+    display: block;
+    margin: 0 0 1rem 0;
+    justify-content: center;
+}
+
+/* Section Titles */
+.section-title, label.date, #signup .section label {
+    position: relative;
+    font-weight: 600;
+}
+
+/* == Input format */
+input[type="text"],
+input[type="number"],
+input[type="email"],
+input[type="password"],
+#signup form input,
+select {
+    display: block;
+    width: 100%;
+    height: 2rem;
+    border-radius: 10px;
+    outline-color: var(--blue1);
+    border: none;
+    padding: 10px;
+    color: var(--darktxt);
+    font-weight: 500;
+}
+
+select {
+    padding: 5px 10px 7px 10px;
+}
+
+select:focus, select:active {
+    outline-color: var(--blue1);
+}
+
+/* == Radio buttons */
+input[type='radio'] {
+    margin-right: 5px;
+}
+
+/* == Selection Format */
+.selection label {
+    position: relative;
+    font-size: 0.8rem;
+    font-weight: 700;
+    background-color: white;
+    color: var(--darktxt);
+    padding: 7px;
+    width: 100%;
+    border-radius: 10px;
+    display: flex;
+    align-content: center;
+}
+
+/* Solo Destination Section margin */
+#solo .section.destination {
+    margin-bottom: 10px;
+}
+
+/* == Preview Destination */
+.preview {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 700;
+    background-color: var(--btn1);
+    color: gray;
+    border-radius: 10px;
+    padding: 10px;
+    margin-top: 10px;
+    height: 50px;
+}
+
+/* Tour Duration */
+.duration {
+    font-weight: 200;
+}
+
+/* Travel Date */
+label.travel-date {
+    display: block;
+    background-color: white;
+    color: var(--darktxt);
+    height: 2rem;
+    font-weight: 500;
+    border-radius: 10px;
+    padding: 5px 0 7px 10px;
+}
+
+/* Hide Date Input Field */
+input[type="date"] {
+    border: none;
+    width: 21px;
+    height: 16px;
+    background-color: transparent;
+    outline-color: var(--blue1);
+    outline-offset: 3px;
+    margin-right: 5px;
+}
+  
+/* Calendar Icon */
+input[type="date"]::-webkit-calendar-picker-indicator {
+    background: url('../../public/images/date.svg') right 2px no-repeat;
+    background-size: cover;
+    transform: translateY(-2px);
+    width: 15px;
+    height: 15px;
+    padding-left: 5px;
+    
+}
+
+/* Fieldset */
+fieldset {
+    position: relative;
+    border: 1px solid white;
+    border-radius: 10px;
+    padding: 10px;
+    margin: 15px 0 5px 0;
+}
+
+#with-guests div.join fieldset {
+    display: none;
+}
+
+label[for="more"] {
+    margin-bottom: 5px;
+}
+
+/* Legend */
+legend {
+    position: absolute;
+    top: -12px;
+    left: 30%;
+    font-size: 0.8rem;
+    color: var(--darktxt);
+    background-color: var(--btn1);
+    border-radius: 20px;
+    width: -moz-fit-content;
+    width: fit-content;
+    padding: 3px 8px;
+}
+
+/* Tours Section Row gap */
+.selection label:not(:last-child) {
+    margin-bottom: 5px;
+}
+
+/* == Tours Available Slots */
+span.slot {
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 100%;
+    color: white;
+    background-color: var(--btn2);
+    border-radius: 10px;
+    padding: 6px 10px 5px 10px;
+    font-size: 1rem;
+    font-weight: 800;
+    text-shadow: 0 0 2px black;
+}
+
+
+/* Joiner Starts */
+
+.section.join div.selection {
+    display: flex;
+    column-gap: 10px;
+}
+
+label.join {
+    width: 50%;
+}
+
+/* == More joiners */
+.join span.slot {
+    background-color: var(--btn1);
+    color: var(--darktxt);
+    text-shadow: none;
+}
+
+
+.joiner {
+    display: flex;
+    column-gap: 10px;
+    flex-wrap: wrap;
+}
+
+.joiner .form-label {
+    margin-top: 0.5rem;
+    margin-bottom: 0.1rem;
+}
+
+.joiner ~ .joiner:not(:first-child) {
+    border-top: 2px solid white;
+    margin-top: 15px;
+    padding-top: 10px;
+}
+
+.joiner div.name {
+    width: 100%;
+}
+
+.joiner .age {
+    width: 20%;
+}
+
+.joiner .sex {
+    width: 35%;
+}
+
+.joiner .add,
+.joiner .remove {
+    width: 15%;
+}
+
+.add, .remove {
+    text-align: center;
+    align-self: end;
+}
+
+.add img, .remove img {
+    height: 30px;
+    /* margin-left: 10px; */
+}
+.joiner .add.one-buddy {
+    margin-left: 30px;
+}
+
+.add img {
+    height: 30px;
+    width: auto;
+    /* margin-left: 10px; */
+}
+
+.remove {
+    margin-left: 5px;
+}
+
+.add {
+    text-align: center;
+    align-self: end;
+}
+
+/* With Friends Joiners Count */
+.join label.section-title span {
+    position: relative;
+    font-size: 1rem;
+    font-weight: 700;
+    color: white;
+    background-color: var(--btn2);
+    text-shadow: 0 0 1px black, 0 0 2px black;
+    border-radius: 10px;
+    margin-left: 10px;
+    width: -moz-fit-content;
+    width: fit-content;
+    padding: 5px 10px;
+}
+
+label.date {
+    margin-top: 10px;
+}
+
+.travel-date label {
+    margin-left: 5px;
+}
+
+/* Joiner Ends */
+
+/* Pricing Starts */
+
+/* == Background */
+div.price {
+    position: relative;
+    background-color: var(--blue2);
+    color: var(--darktxt);
+    border-radius: 10px;
+    padding: 10px;
+    font-weight: 600;
+}
+
+div.price label:not(div.price .total label) {
+    padding-left: 10px;
+}
+
+/* == values */
+div.price span {
+    position: absolute;
+    right: 20px;
+}
+
+/* == Total */
+.total {
+    background-color: white !important;
+    border-radius: 10px;
+    padding: 10px;
+    font-weight: 900;
+}
+
+/* Pricing Ends */
+
+/* Payment Methods Start */
+.logo {
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 100%;
+    width: 100px;
+}
+
+.logo div {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 5px;
+}
+
+.logo div img {
+    height: 100%;
+}
+
+/* Payment Methods End */
+
+/* == Agreement */
+.paynow > div:first-child label {
+    font-size: 0.8rem;
+    line-height: 0.8rem;
+}
+
+/* Pay Now */
+.paynow button {
+    display: block;
+    margin: 10px auto 0 auto;
+    background-color: #0d6efd;
+    color: white;
+    font-size: 1.5rem;
+    font-weight: 700;
+    padding: 5px 0;
+    border-radius: 15px;
+    width: 80%;
+}
+
+div.paynow {
+    margin-bottom: 0;
+}
+
+.paynow input {
+    height: 20px;
+    width: 20px;
+    margin: 3px 5px 5px 0;
+}
+
+div.agree {
+    display: flex;
+    align-content: center;
+}
+
+/* Sweet Alert Ok Button */
+div:where(.swal2-container) button:where(.swal2-styled).swal2-confirm {
+    background-color: var(--btn2) !important;
+}
+
+/* Form Ends */
+
+/* No Destination */
+
+.no-destination {
+    color: white !important;
+    margin-top: 8rem;
+    text-align: center;
+}

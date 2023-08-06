@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="180" height="64" viewBox="0 0 180 64">
+  <g id="with-friends" transform="translate(-476 -349)">
+    <g id="Rectangle_36" data-name="Rectangle 36" transform="translate(479 352)" fill="#fff" stroke="#4d7080" stroke-width="3">
+      <rect width="174" height="58" rx="29" stroke="none"/>
+      <rect x="-1.5" y="-1.5" width="177" height="61" rx="30.5" fill="none"/>
+    </g>
+    <g id="Group_124" data-name="Group 124" transform="translate(-3.16 -27)">
+      <text id="with_friends" data-name="with friends" transform="translate(544 414)" fill="#4e7180" font-size="15" font-family="Gontserrat-Medium, Montserrat" font-weight="500"><tspan x="0" y="0">with friends</tspan></text>
+      <path id="Icon_ionic-ios-heart" data-name="Icon ionic-ios-heart" d="M26.65,3.938h-.077A8.712,8.712,0,0,0,19.3,7.919a8.712,8.712,0,0,0-7.273-3.981H11.95a8.656,8.656,0,0,0-8.575,8.652,18.637,18.637,0,0,0,3.66,10.16C11.644,29.05,19.3,34.563,19.3,34.563s7.656-5.513,12.265-11.814a18.637,18.637,0,0,0,3.66-10.16A8.656,8.656,0,0,0,26.65,3.938Z" transform="translate(497.785 389.063)" fill="#4e7180"/>
+    </g>
+  </g>
+</svg>

@@ -1,0 +1,195 @@
+
+/* TABLET */
+@media (min-width: 768px) {
+    .current-page {
+        margin-top: 6rem !important;
+    }
+
+    .current-page + h1 {
+        font-size: 2.5rem !important;
+    }
+
+    #destinations > div > div {
+        width: 70%;
+        margin: auto;
+    }
+
+    .carousel-indicators {
+        transform: translateY(-1rem);
+    }
+
+    #destinations div.accordion {
+        max-height: 700px;
+        overflow-y: auto;
+    }
+
+    #destinations .carousel-indicators {
+        margin-bottom: 0 !important;
+    }
+    
+}
+
+/* SMALL DESKTOP */
+@media (min-width: 992px) {
+
+    /* == Page Background */
+    #destinations {
+        background: url('../../public/images/destinations-bg.webp') right bottom no-repeat !important;
+        background-size: cover !important;
+    }
+
+    .current-page {
+        font-size: 1.5rem;
+        margin-top: 6rem !important;
+    }
+
+    .current-page + h1 {
+        font-size: 2rem !important;
+        margin-top: -1rem !important;
+    }
+
+    #destinations div.accordion {
+        display: none !important;
+    }
+
+    #destinations > div > div {
+        width: 90% !important;
+    }
+
+    #destinations div.desktop-view {
+        display: flex !important;
+        height: 380px !important;
+        width: 100% !important;
+    }
+
+    /* Destination Names */
+    #destinations ul li {
+        position: relative;
+        height: 70px;
+        margin-bottom: 10px;
+    }
+
+    #destinations .destination-names {
+        max-height: 70vh;
+        overflow-y: auto;
+    }
+
+    #destinations li p {
+        position: relative;
+        padding-left: 10px;
+        padding-top: 5px;
+        z-index: 1;
+        font-family: var(--special);
+        color: var(--btn1);
+        text-shadow:
+                0 0 2px rgba(0, 0, 0, 1.0),
+                0 0 3px rgba(0, 0, 0, 1.0),
+                0 0 5px rgba(0, 0, 0, 1.0),
+                0 0 10px rgba(255, 255, 255, 1),
+                0 0 5px rgba(255, 255, 255, 1);
+    }
+
+    #destinations .destination-names li img {
+        position: absolute;
+        z-index: 0 !important;
+        height: inherit;
+        width: 100%;
+        object-fit: cover;
+        border-radius: 10px;
+    }
+
+    #destinations ul {
+        position: relative;
+        list-style: none;
+    }
+
+    /* Destinations Description */
+    #destinations div.destination-desc {
+        background-color: rgba(0, 0, 0, 0.5);
+        -webkit-backdrop-filter: blur(20px);
+        backdrop-filter: blur(20px);
+        padding: 50px;
+        border-radius: 10px;
+        height: 70vh;
+        overflow-y: auto;
+        color: white;
+    }
+
+    /* Accordion-Body Headers */
+    #destinations div.destination-desc h2 {
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: var(--btn1);
+    }
+
+    /* Accordion-Body Days */
+    #destinations div.destination-desc h6 {
+        font-weight: 600;
+        color: var(--blue1);
+    }
+
+    #destinations div.destination-desc img {
+        object-fit: cover;
+    }
+
+    /* Book now button */
+    .booknow {
+        width: 50% !important;
+    }
+
+    #destinations .carousel-indicators {
+        margin-bottom: 10px !important;
+    }
+
+    li h3 {
+        position: relative;
+        top: 10px;
+        margin-left: 10px;
+        font-size: 1.3rem;
+        z-index: 1;
+        font-family: var(--special);
+        color: var(--btn1);
+        text-shadow:
+                0 0 2px rgba(0, 0, 0, 1.0),
+                0 0 3px rgba(0, 0, 0, 1.0),
+                0 0 5px rgba(0, 0, 0, 1.0),
+                0 0 10px rgba(255, 255, 255, 1),
+                0 0 5px rgba(255, 255, 255, 1);
+    }
+
+    /* == Image Thumbnails */
+    li img {
+        border-radius: 5px;
+        position: absolute;
+        top: 0%;
+        width: inherit;
+        max-height: 100%;
+        object-fit: cover;
+    }
+
+    /* == image overlay */
+    .overlay {
+        border-radius: 5px;
+        position: absolute;
+        top: 0%;
+        width: 100%;
+        height: inherit;
+        background-color: rgba(255, 255, 255, 0.8);
+    }
+    
+}
+
+/* LARGE DESKTOP */
+@media (min-width: 1200px) {
+
+    
+    
+    #destinations > div > div {
+        width: 93% !important;
+        transform: translateX(-10px);
+    }
+
+    #destinations div.desktop-view {
+        height: 75vh !important;
+    }
+}

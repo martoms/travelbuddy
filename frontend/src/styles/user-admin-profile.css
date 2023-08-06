@@ -1,0 +1,587 @@
+
+/* Background */
+div#profile.page,
+div#admin.page {
+    background: none;
+    color: var(--darktxt);
+    padding: 0;
+    height: auto;
+}
+
+/* Cover photo */
+div.cover {
+    position: relative;
+    background: url('../../public/images/cover.webp') left -50% bottom no-repeat;
+    background-size: cover;
+    height: 200px;
+}
+
+/* Profile Picture */
+#user-profile,
+#user-admin {
+    position: absolute;
+    background: url('../../public/images/tb-icon.svg') no-repeat;
+    background-size: cover;
+    height: 100%;
+    width: auto;
+    top: 100px;
+    right: 2.5rem;
+    height: 150px;
+    width: 150px;
+    border: 5px solid white;
+    border-radius: 100%;
+}
+
+/* Personal Info Section */
+div.personal-info {
+    position: relative;
+    padding: 0.5rem 2.5rem 1rem 2.5rem;
+}
+
+/* username */
+#profile .username,
+#admin .username {
+    font-weight: 800;
+    color: var(--btn2);
+    padding-left: 0;
+}
+
+/* fullname */
+#profile .fullname,
+#admin .fullname {
+    padding-left: 0;
+}
+
+
+/* Icon Container */
+div.icons {
+    margin-bottom: 1rem;
+    padding-left: 0;
+}
+
+div.icons > span {
+    position: relative;
+}
+
+/* Notification icon */
+div.icons img {
+    height: 30px;
+    width: auto;
+    margin-right: 10px;
+}
+
+/* Notification alert */
+div.icons > span > span {
+    position: absolute;
+    left: 0;
+    /* padding: 5px; */
+    text-align: center;
+    vertical-align: middle;
+    padding-top: 1px;
+    font-size: 0.7rem;
+    font-weight: 600;
+    color: white;
+    background-color: rgb(253, 38, 0);
+    height: 1.2rem;
+    width: 1.2rem;
+    border-radius: 50%;
+}
+
+/* Upcoming Tours */
+div.upcoming-tours,
+div.destinations {
+    background-color: hsl(0, 0%, 98%);
+    color: white;
+    padding: 0 2rem 1rem 2rem;
+}
+
+div.upcoming-tours-item {
+    background-color: white;
+    border-radius: 10px;
+    margin-top: 20px;
+    padding-top: 20px;
+    filter: drop-shadow(0px 5px 5px rgba(0, 0, 0, 0.2))
+}
+
+/* Upcoming tours header */
+div.upcoming-tours h3 {
+    margin-top: 2rem;
+    margin-left: 1rem;
+    font-weight: 700;
+    color: var(--darktxt);
+    padding-left: 0;
+}
+
+/* div.buddies h5 {
+    margin-top: 1rem;
+    font-weight: 700;
+    color: var(--btn2);
+    padding-left: 0;
+} */
+
+/* Admin Destinations list header */
+div.destinations h3 {
+    margin-left: 0;
+    font-weight: 700;
+    color: var(--btn2);
+}
+
+/* Tour */
+div.upcoming-tours div.tour {
+    position: relative;
+    padding: 0 42px;
+}
+
+/* Tour Title */
+div.upcoming-tours h4 {
+    font-family: var(--special);
+    font-size: 1.5rem;
+    color: var(--btn1);
+    margin-bottom: 0;
+    text-shadow: 0 0 3px rgba(0, 0, 0, 1.0), 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+div.upcoming-tours p {
+    color: hsla(0, 0%, 40%);
+}
+
+/* Days to go */
+div.upcoming-tours div.tour span {
+    position: absolute;
+    right: 42px;
+    top: 0;
+    background-color: var(--btn1);
+    color: var(--darktxt);
+    font-size: 0.8rem;
+    font-weight: 700;
+    padding: 3px 8px;
+    border-radius: 10px;
+}
+
+/* Tour Details */
+div.upcoming-tours div.details {
+    padding: 1rem 42px;
+    
+}
+
+div.itinerary-details {
+    height: 400px;
+    overflow-y: scroll;
+}
+
+div.upcoming-tours .details h2, div.buddies h5 {
+    margin-top: 0;
+    color: var(--btn2);
+    font-size: 1.2rem;
+    font-weight: 700;
+}
+
+/* == Days */
+.upcoming-tours .details h6 {
+  margin-top: 10px;
+  color: white;
+  background-color: var(--btn2);
+  padding: 5px;
+  border-radius: 10px;
+  width: 25%;
+  text-align: center;
+  font-weight: 700;
+  font-size: 0.8rem;
+}
+
+/*  Travel Buddies */
+div.upcoming-tours div.buddies {
+    position: relative;
+    padding: 0 42px;
+    font-weight: 700;
+}
+
+/* Finsihed Tour Acoordion */
+#profile div.accordion,
+#admin div.accordion {
+    height: auto;
+}
+
+/* Accordion Button */
+#profile .accordion-button,
+#admin .accordion-button {
+    color: hsla(0, 0%, 40%);
+    height: 50px;
+    padding: 0 2rem;
+    font-weight: 700;
+    background-color: white;
+}
+
+.admin-destinations-name {
+    z-index: 1;
+    color: white;
+    text-shadow: 0 0 5px black;
+}
+
+#admin .accordion-item {
+    border: none !important;
+    background-color: transparent !important;
+}
+
+#admin .accordion {
+    filter: drop-shadow(0px 5px 5px rgba(0, 0, 0, 0.2)) !important;
+}
+
+#profile .accordion-button span,
+#admin .accordion-button span {
+    margin-left: 10px;
+}
+
+span.create-package {
+    color: white;
+}
+
+.create-package button {
+    background-color: var(--btn2) !important;
+}
+
+.admin-bookings {
+    background-color: white;
+}
+
+.admin-bookings ol > li {
+    color: hsla(0, 0%, 40%);
+}
+
+.tours-history button {
+    background-color: var(--btn2) !important;
+}
+
+/* History Icon */
+.tours-history button img {
+    height: 30px;
+    width: auto;
+}
+
+.tours-history button div {
+    display: flex;
+    align-items: center;
+}
+
+/* Tours History text */
+.tours-history button span {
+    margin-left: 40px !important;
+    color: white;
+}
+
+/* Tours History Body */
+.tours-history .accordion-body,
+.destination-list .accordion-body,
+#admin .create-package .accordion-body {
+    padding: 2rem;
+    background-color: var(--blue2);
+    color: var(--darktxt);
+}
+
+/* Tours History Items */
+.tours-history .accordion-body .tour > div {
+    background-color: white;
+    padding: 10px;
+    border-radius: 15px;
+    margin-bottom: 10px;
+}
+
+/* Tours History Destination Name */
+.tours-history .accordion-body h4,
+#create-package h4 {
+    font-family: var(--special);
+    margin-bottom: 0;
+}
+
+#addExperience h4,
+#create-package h4 {
+    color: var(--btn1);
+}
+
+/* Tours History Package */
+.tours-history .accordion-body p {
+    margin-bottom: 0;
+}
+
+/* Add Experience Announcement */
+.tours-history .accordion-body div.finished {
+    margin: 2rem 0 1rem 0;
+    line-height: 1rem;
+    font-weight: 700;
+}
+
+/* Add Experience Form */
+#profile form,
+#admin .create-package form {
+    backdrop-filter: none;
+    background-color: var(--btn2);
+    border-radius: 10px;
+    width: auto;
+    flex-direction: column;
+    color: white;
+    padding: 1rem;
+}
+
+/* Label Spacing */
+#profile form label,
+#admin .create-package label {
+    margin-top: 10px;
+    font-weight: 600;
+}
+
+/* Input Outline */
+#profile form input,
+#profile form textarea,
+#admin .create-package input,
+#admin .create-package textarea {
+    outline-color: var(--btn1);
+}
+
+#admin input[type="date"] {
+    display: block;
+    border: none;
+    width: 100%;
+    height: auto;
+    background-color: white;
+    border-radius: 10px;
+    padding: 5px;
+    outline-color: var(--blue1);
+    outline-offset: 3px;
+    margin-right: 5px;
+}
+
+/* Add Experience Text Area */
+#profile form textarea,
+#admin .create-package textarea {
+    border-color: transparent;
+    width: 100%;
+    height: 150px;
+    border-radius: 10px;
+    padding: 10px 15px;
+    color: var(--darktxt);
+}
+
+/* Add Experience Submit Button */
+#profile form button,
+#admin .create-package form button {
+    display: block;
+    margin-top: 2rem;
+    margin-left: auto;
+    background-color: var(--btn1);
+    color: var(--darktxt);
+    padding: 5px 8px;
+    border-radius: 10px;
+    font-weight: 800;
+}
+
+
+/* Destinations list accordion */
+#admin div.destinations {
+    display: flex;
+    padding: 2rem;
+    min-height: calc(100vh - 320px);
+    align-content: flex-start;
+}
+
+/* Destinations list accordion body */
+#admin div.destinations .accordion-body {
+    background-color: var(--blue2);
+    border-radius: 5px;
+    margin-bottom: 5px;
+}
+
+#admin div.destinations .accordion .accordion .accordion-body {
+    background-color: white;
+    border-radius: 5px;
+    margin-bottom: 5px;
+}
+
+#admin div.destinations button {
+    margin-bottom: 5px;
+}
+
+/* Destinations list accordion heading */
+#admin div.destinations .accordion-body h3 {
+    color: var(--darktxt);
+}
+
+/* Destination Booking Accordion button */
+#admin div.destination-booking button {
+    background-color: white !important;
+    color: var(--darktxt) !important;
+    margin-bottom: 5px;
+}
+
+/* Destination Booking Accordion body */
+#admin div.destination-bookings .accordion-body {
+    background-color: white;
+    color: white !important;
+    font-weight: 700;
+}
+
+/* Destination Booking Accordion body heading */
+#admin div.destination-bookings .accordion-body h3 {
+    color: var(--darktxt);
+    margin-bottom: 2rem;
+}
+
+#admin .buddies-list {
+    margin: 0;
+    color: var(--btn2);
+    font-weight: 900;
+}
+
+#admin .bookings-username {
+    font-weight: 900;
+}
+
+.destinations-list-item {
+    background: none;
+    border: none;
+}
+
+/* Admin Create Pckage Icon */
+.create-package button img {
+    position: relative;
+    height: 30px;
+    width: auto;
+}
+
+/* Loading */
+div.loading {
+    margin-top: 40vh;
+    text-align: center;
+    height: 100vh;
+}
+
+/* Admin Tour Package Controls */
+.tourpackage-controls {
+    display: flex;
+    justify-content: space-between;
+}
+
+.tourpackage-controls img {
+    margin-left: 10px;
+}
+
+.tourpackage-controls > div {
+    display: inline-block;
+}
+
+/* Top destination star */
+img.star {
+    position: absolute;
+    top: 30%;
+    left: 10px;
+    height: 20px;
+}
+
+/* Tour Package Add Fields */
+div.tourpackage-add-fields {
+    display: flex;
+    font-weight: 700;
+    justify-content: center;
+    align-items: center;
+    margin: 10px auto 0 auto;
+    margin-bottom: 0;
+    border: 2px solid white;
+    height: 60px;
+    border-radius: 10px;
+    width: 80%;
+}
+
+/* Admin Settings Modal */
+#user-settings-modal .accordion-header > div,
+#admin-settings-modal .accordion-header > div {
+    display: flex;
+    align-items: center;
+    align-content: center !important;
+}
+
+#user-settings-modal .accordion-header button div img,
+#admin-settings-modal .accordion-header button div img  {
+    position: absolute;
+    left: 20px;
+    top: 12px;
+}
+
+#user-settings-modal .accordion-header button,
+#admin-settings-modal .accordion-header button {
+    height: 50px;
+}
+
+#user-settings-modal .accordion-header p,
+#admin-settings-modal .accordion-header p {
+    margin-left: 40px;
+    margin-bottom: 0;
+    color: var(--blue3);
+}
+
+#user-settings-modal div.accordion-item,
+#admin-settings-modal div.accordion-item {
+    color: white;
+    background-color: rgba(255, 255, 255, 0.512);
+}
+
+/* Notifications */
+div.notification-items-container {
+    display: flex;
+}
+
+div.notifications-checkbox,
+div.notifications-items {
+    display: inline-block;
+}
+
+div.notifications-checkbox input {
+    width: 20px;
+    height: 20px;
+    margin-right: 5px;
+    margin-top: 15px;
+}
+
+div.notifications-items {
+    width: 100%;
+}
+
+div.notifications-control {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 10px;
+}
+
+div.notifications-control span {
+    font-weight: 700;
+}
+
+/* No tours */
+div.no-tours {
+    display: flex;
+    justify-items: center;
+    flex-direction: column;
+}
+
+div.no-tours a {
+    margin: 1rem auto;
+}
+
+div.no-tours button {
+    font-size: 1rem;
+    font-weight: 800;
+    padding: 10px 15px;
+    border-radius: 50px;
+    color: var(--darktxt);
+    background-color: var(--btn1);
+}
+
+div.no-tours h3 {
+    text-align: center;
+    margin-top: 5rem;
+    color: var(--darktxt);
+    margin-left: 0;
+}
+
+/* Create Package Buttons */
+div.create-package-btns {
+    display: flex;
+}

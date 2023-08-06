@@ -1,0 +1,146 @@
+
+/* TABLET */
+@media (min-width: 768px) {
+
+    /* == Page Background */
+    #with-friends div.page {
+        background: url('../../public/images/booking.webp') left bottom no-repeat !important;
+        background-size: cover !important;
+    }
+
+    #with-guests form,
+    #with-friends form,
+    #solo form {
+        width: 70% !important;
+        margin: auto;
+    }
+
+    div.paynow > div {
+        display: flex;
+        align-items: center;
+    }
+
+}
+
+/* SMALL DESKTOP */
+@media (min-width: 992px) {
+
+    div#with-guests {
+        padding-left: 1.5rem;
+    }
+
+    /* == Page Background */
+    #with-friends div.page {
+        background: url('../../public/images/booking.webp') left bottom no-repeat !important;
+        background-size: cover !important;
+    }
+
+    #with-guests form,
+    #with-friends form,
+    #solo form {
+        width: 100% !important;
+        margin-left: auto !important;
+        margin-right: 0 !important;
+        background-color: transparent !important;
+        height: 74vh !important;
+    }
+
+    .package-preview {
+        height: 74vh !important;
+    }
+
+    .agree {
+        padding: 0 !important;
+    }
+
+    /* Package Preview */
+    .package-preview {
+        border-radius: 10px;
+        -webkit-backdrop-filter: blur(20px);
+        backdrop-filter: blur(20px);
+        height: 67vh;
+        padding: 30px;
+        overflow-y: auto;
+        color: white;
+        text-shadow: 0 0 5px black;
+    }
+
+    /* Headers */
+    .package-preview h2 {
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: var(--btn1);
+    }
+
+    /* Days */
+    .package-preview h6 {
+        /* font-weight: 600; */
+        color: var(--blue1);
+    }
+
+    .package-preview img {
+        object-fit: cover;
+    }
+
+    .travel-option-lg h6 {
+        font-family: var(--special);
+        text-align: center;
+        font-size: 1.2rem;
+        color: var(--btn1);
+        /* font-weight: 800; */
+    }
+
+    .travel-option-lg label {
+        font-weight: 600;
+    }
+
+    .travel-option-lg > div label img {
+        height: 20px;
+        cursor: pointer;
+    }
+
+    .travel-option-lg > div label {
+        margin-bottom: 10px;
+    }
+
+    .travel-option-lg {
+        display: flex;
+        justify-content: center;
+    }
+
+    .travel-option-lg > div {
+        display: flex;
+        justify-content: center;
+    }
+
+    .travel-option-lg > div img {
+        height: 35px;
+    }
+
+    
+}
+
+/* LARGE DESKTOP */
+@media (min-width: 1200px) {
+
+    .tourpackage-destination {
+        font-family: var(--special);
+        color: var(--btn1) !important;
+        font-size: 3rem;
+        margin-bottom: 2rem;
+    }
+
+    /* == Page Background */
+    #with-friends div.page {
+        background-size: cover !important;
+    }
+
+    
+    #with-guests form,
+    #with-friends form,
+    #solo form,
+    .package-preview {
+        height: auto;
+        max-height: 78vh !important;
+    }
+}

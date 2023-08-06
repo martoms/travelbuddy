@@ -626,6 +626,16 @@ const userBookings_get = async (req, res) => {
 
           // Also update the Bookings Collection
           await Booking.findByIdAndUpdate(booking.bookingId, { isCompleted: true });
+
+          // Send Notification
+          const notification = {
+            title: 'Completed Tour',
+            content: {
+                message: `@${user.username}, you just finished a tour in ${noUserExperience[0].destination}! Kindly go to the Tours History and share your experience.`
+            } 
+          }
+          
+          await sendNotification(userId, notification);
           
         }
       } catch (err) {
@@ -722,15 +732,6 @@ const toursHistory_get = async (req, res) => {
         message: 'It looks empty at the moment. All your completed tours will be shown here.'
       })
     } else if (noUserExperience.length > 0) {
-        // Send Notification
-        const notification = {
-            title: 'Completed Tour',
-            content: {
-                message: `@${user.username}, you just finished a tour in ${noUserExperience[0].destination}! Kindly go to the Tours History and share your experience.`
-            } 
-        }
-        
-        await sendNotification(userId, notification);
 
         res.status(200).json({
         details: toursHistory,
@@ -760,7 +761,7 @@ const allBookings_get = async (req, res) => {
       const bookings = await Booking.find(requestBody);
 
       for (const booking of bookings) {
-        if (booking.tourEnds <= new Date()) {
+        if (booking.tourEnds <= new Date() && booking.isCompleted === false) {
           booking.isCompleted = true;
           await booking.save();
         }

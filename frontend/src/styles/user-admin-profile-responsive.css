@@ -1,0 +1,314 @@
+/* TABLET */
+@media (min-width: 768px) {
+
+    /* Cover photo */
+    #admin div.cover {
+        background: url('../../public/images/cover.webp') left top 50% no-repeat !important;
+    }
+
+    /* == Page Background */
+    #admin div.page {
+        background: none !important;
+    }
+
+    #user-profile, #user-admin {
+        transform: translateX(-1.2rem);
+    }
+
+    .personal-info,
+    .tours-history .accordion-button,
+    .tours-history .accordion-body {
+        padding-left: 6rem !important;
+        padding-right: 6rem !important;
+        margin: 0;
+    }
+
+    .upcoming-tours {
+        padding-left: 4.5rem !important;
+        padding-right: 4.5rem !important;
+    }
+
+    .upcoming-tours img {
+        object-fit: cover;
+    }
+    
+    #profile .scrollOffsetIndicator {
+        position: absolute;
+        margin-top: 60px;
+    }
+
+    /* ADMIN ======= */
+
+    .destinations {
+        padding: 2rem 6rem !important;
+    }
+
+    /* Destination Names */
+    #admin ul {
+        list-style: none;
+        padding: 0;
+    }
+
+    #admin ul li {
+        display: flex;
+        align-items: center;
+        background-color: var(--btn2);
+        padding: 15px;
+        border-radius: 10px;
+        position: relative;
+        /* height: 70px; */
+        margin-bottom: 10px;
+        height: 60px;
+    }
+
+    ul.user-buddies li {
+        list-style-type: circle !important;
+        background-color: transparent !important;
+        padding: 0 !important;
+        margin: 0 0 5px 10px !important;
+        height: auto !important;
+    }
+
+    #admin li p {
+        /* font-family: var(--special); */
+        font-weight: 800;
+        font-size: 1.2rem;
+        margin-bottom: 0;
+    }
+
+    .create-package button,
+    .create-package .accordion-body {
+        padding-left: 6rem !important;
+        padding-right: 6rem !important;
+    }
+
+    
+}
+
+/* SMALL DESKTOP */
+@media (min-width: 992px) {
+
+    /* Cover photo */
+    #admin div.cover,
+    #profile div.cover {
+        position: relative;
+        background: url('../../public/images/cover.webp') left top 50% no-repeat !important;
+        background-size: cover !important;
+    }
+
+    /* Page Background */
+    #with-friends,
+    #with-guests,
+    #solo {
+        background: url('../../public/images/booking.webp') left bottom no-repeat !important;
+        background-size: cover !important;
+    }
+
+    #profile .scrollOffsetIndicator,
+    #admin .scrollOffsetIndicator {
+        position: absolute;
+        margin-top: 90px;
+    }
+
+    div.personal-info {
+        padding-right: 10rem !important;
+        align-items: baseline;
+    }
+
+    .personal-info .username,
+    .personal-info .fullname,
+    .personal-info .icons,
+    .personal-info > span {
+        display: inline-block !important;
+        width: -moz-fit-content;
+        width: fit-content;
+    }
+
+    .username,
+    .personal-info > span {
+        font-size: 1.5rem;
+    }
+
+    .personal-info > span {
+        padding-left: 0;
+    }
+
+    .fullname {
+        font-size: 1.2rem;
+    }
+
+    .icons {
+        margin-left: auto;
+        padding-right: 50px;
+    }
+
+    .row .tours-history {
+        padding-top: 1.9rem;
+        padding-left: 6rem;
+        padding-right: 2.5rem;
+        background-color: hsl(0, 0%, 98%);
+        color: var(--darktxt);
+    }
+
+    .row .tours-history img[alt="history"] {
+        height: 30px;
+        width: auto;
+        margin-right: 10px;
+    }
+
+    .row .tours-history > div {
+        /* display: flex; */
+        align-items: center;
+    }
+
+    .row .tours-history > div:first-child span {
+        font-size: 1.5rem;
+        font-weight: 700;
+    }
+
+    /* Tour */
+    .row .tours-history div.tour > div {
+        display: block;
+        position: relative;
+        margin-top: 20px;
+        background-color: white;
+        border-radius: 10px;
+        color: #4e7180;
+        padding: 10px;
+        filter: drop-shadow(0px 5px 5px rgba(0, 0, 0, 0.2))
+    }
+
+    /* Tour Title */
+    .row .tours-history h4 {
+        font-family: var(--special);
+        margin-bottom: 0;
+    }
+
+    .row .tours-history .tour p{
+        font-size: 0.8rem;
+        margin-bottom: 0;
+    }
+
+    /* Add Experience Announcement */
+    .tours-history div.finished {
+        margin: 2rem 0 1rem 0;
+        line-height: 1rem;
+        font-weight: 700;
+        color: #4e7180;
+    }
+
+    .tours-history div.finished p {
+        margin-bottom: 0;
+    }
+
+    /* Add Experience Form */
+    #profile form {
+        background-color: #4e7180;
+    }
+
+    #profile form h4 {
+        color: var(--btn1);
+    }
+
+    .lg-bookings {
+        background-color: var(--blue2);
+        border-radius: 10px;
+        padding: 20px;
+    }
+
+    .lg-bookings h3 {
+        color: #4e7180 !important;
+    }
+
+    .lg-bookings .accordion {
+        display: block !important;
+    }
+
+    #admin div.destination-booking .accordion-body h3 {
+        color: var(--btn1) !important;
+    }
+
+    .create-package .accordion {
+        display: block !important;
+        padding-right: 0 !important;
+    }
+
+    .modal-content {
+        margin: 0 auto;
+        width: 40%;
+    }
+
+    /* Admin Controls */
+    /* .admin-control-header {
+        color: white !important;
+    } */
+
+    .admin-control-tab-name {
+        color: hsla(0, 0%, 40%);
+    }
+
+    .admin-control-tab-name-selected {
+        color: white;
+        text-shadow: 0 0 5px black;
+    }
+    
+    .admin-control-tab {
+        background-color: white !important;
+        filter: drop-shadow(0px 5px 5px rgba(0, 0, 0, 0.2));
+    }
+
+    #admin .admin-control-item button {
+        background-color: white;
+        color: hsla(0, 0%, 40%);
+    }
+
+    /* Destinations list accordion body */
+    #admin div.destinations .accordion-body {
+        background-color: white;
+    }
+
+    .admin-controls-destination {
+        color: var(--btn1);
+        text-shadow: 0 0 2px black, 0 0 3px black;
+        font-family: var(--special);
+        font-size: 2rem;
+    }
+
+    .admin-destinations-img {
+        position: absolute;
+        z-index: -1;
+        left: 0;
+        width: 100%;
+    }
+
+    .admin-destinations-overlay {
+        border-radius: 5px;
+        position: absolute;
+        left: 0;
+        z-index: -1 !important;
+        width: 100%;
+        height: inherit;
+        background-color: rgba(255, 255, 255, 0.9);
+    }
+}
+
+/* LARGE DESKTOP */
+@media (min-width: 1200px) {
+
+    /* Cover photo */
+    div.cover {
+        background-size: cover !important;
+    }
+
+    #user-profile {
+        transform: translateX(-3.5rem);
+    }
+
+    .row .tours-history {
+        padding-left: 7rem;
+    }
+
+    .personal-info {
+        padding-left: 6.5rem !important;
+    }
+}

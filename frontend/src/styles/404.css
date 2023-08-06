@@ -1,0 +1,70 @@
+
+/* == Page Background */
+div#page404.page {
+    background: url('../../public/images/404.webp') left -520px bottom no-repeat;
+    background-size: cover;
+}
+
+#page404 h1 {
+    margin-top: 4rem;
+    font-size: 4rem;
+}
+
+#page404 h2 {
+    text-align: center;
+    color: white;
+    font-weight: 400;
+    text-shadow: 0 0 3px black;
+}
+
+div#page404 {
+    position: relative;
+}
+
+div#page404 > div > div {
+    position: absolute;
+    bottom: 3rem;
+    color: white;
+    text-align: center;
+}
+
+div#page404 > div > div h3 {
+    font-weight: 900;
+    text-shadow: 0 0 5px black, 0 0 5px black, 0 0 10px black;
+}
+
+div#page404 a {
+    text-decoration: none;
+    font-size: 1rem;
+    font-weight: 800;
+    color: var(--darktxt);
+    background-color: var(--btn1);
+    padding: 5px 15px;
+    border-radius: 10px;
+    filter: drop-shadow(0 0 5px white);
+}
+
+/* TABLET */
+@media (min-width: 768px) {
+    
+    /* == Page Background */
+    div#page404.page {
+        background: url('../../public/images/404.webp') left -500px bottom no-repeat !important;
+        background-size: cover !important;
+    }
+}
+
+/* SMALL DESKTOP */
+@media (min-width: 992px) {
+
+    /* == Page Background */
+    div#page404.page {
+        background: url('../../public/images/404.webp') left bottom no-repeat !important;
+        background-size: cover !important;
+    }
+}
+
+/* LARGE DESKTOP */
+@media (min-width: 1200px) {
+
+}

@@ -1,0 +1,16 @@
+<svg id="experience-white" xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48">
+  <g id="invisible_box" data-name="invisible box">
+    <rect id="Rectangle_28" data-name="Rectangle 28" width="48" height="48" fill="none"/>
+  </g>
+  <g id="Q3_icons" data-name="Q3 icons">
+    <g id="Group_99" data-name="Group 99">
+      <circle id="Ellipse_6" data-name="Ellipse 6" cx="2" cy="2" r="2" transform="translate(12 29)" fill="#fff"/>
+      <path id="Path_238" data-name="Path 238" d="M34,29H22a2,2,0,0,0,0,4H34a2,2,0,0,0,0-4Z" fill="#fff"/>
+      <circle id="Ellipse_7" data-name="Ellipse 7" cx="2" cy="2" r="2" transform="translate(12 35)" fill="#fff"/>
+      <path id="Path_239" data-name="Path 239" d="M34,35H22a2,2,0,0,0,0,4H34a2,2,0,0,0,0-4Z" fill="#fff"/>
+      <path id="Path_240" data-name="Path 240" d="M24,14a6,6,0,1,0-6-6,6,6,0,0,0,6,6Zm0-8a2,2,0,1,1-2,2A2,2,0,0,1,24,6Z" fill="#fff"/>
+      <path id="Path_241" data-name="Path 241" d="M13,20v4a2,2,0,0,0,2,2H33a2,2,0,0,0,2-2V20a18,18,0,0,0-11-4,18,18,0,0,0-11,4Zm4.1,2A13.5,13.5,0,0,1,24,20a13.5,13.5,0,0,1,6.9,2Z" fill="#fff"/>
+      <path id="Path_242" data-name="Path 242" d="M41,2H36a2,2,0,0,0,0,4h4V42H8V6h4a2,2,0,0,0,0-4H7A2.9,2.9,0,0,0,4,5V43a2.9,2.9,0,0,0,3,3H41a2.9,2.9,0,0,0,3-3V5a2.9,2.9,0,0,0-3-3Z" fill="#fff"/>
+    </g>
+  </g>
+</svg>

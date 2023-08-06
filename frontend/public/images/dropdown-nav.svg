@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 14 14">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: none;
+      }
+
+      .cls-2 {
+        fill: #fff;
+      }
+    </style>
+  </defs>
+  <g id="dropdown-nav" transform="translate(0.322 0.322)">
+    <g id="invisible_box" data-name="invisible box">
+      <rect id="Rectangle_34" data-name="Rectangle 34" class="cls-1" width="14" height="14" transform="translate(-0.322 -0.322)"/>
+    </g>
+    <g id="icons_Q2" data-name="icons Q2" transform="translate(2.783 6.441)">
+      <path id="Path_254" data-name="Path 254" class="cls-2" d="M13.9,19.087l-2.949-2.949a.529.529,0,0,0-.835.056.584.584,0,0,0,.056.751l3.339,3.311a.529.529,0,0,0,.779,0l3.339-3.311a.584.584,0,0,0,.056-.751.529.529,0,0,0-.835-.056Z" transform="translate(-10.001 -15.959)"/>
+    </g>
+  </g>
+</svg>

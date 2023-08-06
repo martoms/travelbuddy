@@ -1,0 +1,13 @@
+<svg id="settings" xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48">
+  <g id="invisible_box" data-name="invisible box">
+    <rect id="Rectangle_49" data-name="Rectangle 49" width="48" height="48" fill="none"/>
+  </g>
+  <g id="icons_Q2" data-name="icons Q2">
+    <g id="Group_127" data-name="Group 127">
+      <path id="Path_267" data-name="Path 267" d="M24,6A18,18,0,1,1,6,24,18,18,0,0,1,24,6m0-4A21.9,21.9,0,1,0,39.586,8.414,22,22,0,0,0,24,2Z" fill="#4e7180"/>
+      <circle id="Ellipse_10" data-name="Ellipse 10" cx="4" cy="4" r="4" transform="translate(10 20)" fill="#4e7180"/>
+      <circle id="Ellipse_11" data-name="Ellipse 11" cx="4" cy="4" r="4" transform="translate(20 20)" fill="#4e7180"/>
+      <circle id="Ellipse_12" data-name="Ellipse 12" cx="4" cy="4" r="4" transform="translate(30 20)" fill="#4e7180"/>
+    </g>
+  </g>
+</svg>

@@ -1,0 +1,1105 @@
+
+/* Google Fonts */
+ @import url('https://fonts.googleapis.com/css2?family=Lilita+One&family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Nerko+One&display=swap');
+ 
+/* CSS Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Montserrat', sans-serif;;
+}
+
+/* VARIABLES: Colors | Font */
+:root {
+  --darktxt: #4E7180;
+  --btn1: #FFEA20;
+  --btn2: #8DCBE6;
+  --blue1: #9DF1DF;
+  --blue2: #E3F6FF;
+  --blue3: hsl(197, 49%, 10%);
+  --special: 'Lilita One', cursive;
+  --special2: 'Nerko One', cursive;
+}
+/* Body properties */
+html, body {
+	overflow-x: hidden;
+	height: 100%;
+}
+
+/* Define the keyframes for the animation */
+@keyframes hideScrollBar {
+  0% {
+  opacity: 1;
+  }
+  100% {
+  opacity: 0;
+  overflow: hidden;
+  }
+}
+
+/* Travel Plans Modal Starts */
+
+
+/* Header */
+#info-modal .modal-header h1 {
+  /* display: inline-block; */
+  color: var(--btn1);
+  font-weight: 700;
+}
+
+.modal-title > span {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  /* margin-left: 50px; */
+}
+
+/* Check and Wrong Icons*/
+img[alt="check"], img[alt="wrong"] {
+  display: block;
+  height: 30px;
+  width: auto;
+  margin: 0 auto;
+}
+
+/* Icons alignment */
+tbody  td:not(:first-child) {
+  vertical-align: middle;
+}
+
+/* Column width */
+th:not(:first-child), td:not(:first-child) {
+  width: 75px;
+}
+
+/* Column width for Preview Package Modal Price */
+#preview-modal th:not(:first-child), td:not(:first-child) {
+  width: 40%;
+}
+
+#preview-modal tbody td:nth-child(2) {
+  text-align: center;
+}
+
+/* Header text */
+thead th {
+  text-align: center;
+  vertical-align: middle;
+  line-height: 1rem;
+}
+
+/* Footnotes */
+#info-modal p {
+  font-size: 0.8rem;
+}
+
+/* Travel Plans Modal Ends */
+
+
+/* == Page Size (not home page) */
+div.page {
+  height: 100vh;
+  background-attachment: fixed;
+}
+
+/* NAVBAR STARTS */
+
+/* Brand Logo */
+#brand_logo {
+	width: 100px;
+	height: auto;
+}
+
+/* Side Nav-bar Starts */
+.sidenav {
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: #f8f9fa!important;
+  overflow-x: hidden;
+  transition: 0.5s;
+  padding-top: 60px;
+  box-shadow: 0px 0px 8px white;
+}
+
+.sidenav a {
+  padding: 0 8px 0 16px;
+  text-decoration: none;
+  font-size: 25px;
+  color: #818181;
+  display: block;
+  transition: 0.3s;
+}
+
+.sidenav a:hover {
+  color: #f1f1f1;
+}
+
+.sidenav::-webkit-scrollbar { 
+  display: none; 
+} 
+
+
+.animated-icon {
+  width: 30px;
+  height: 20px;
+  position: relative;
+  margin: 0px;
+  -webkit-transform: rotate(0deg);
+  -moz-transform: rotate(0deg);
+  -o-transform: rotate(0deg);
+  transform: rotate(0deg);
+  -webkit-transition: .5s ease-in-out;
+  -moz-transition: .5s ease-in-out;
+  -o-transition: .5s ease-in-out;
+  transition: .5s ease-in-out;
+  cursor: pointer;
+}
+
+.animated-icon span {
+  display: block;
+  position: absolute;
+  height: 3px;
+  width: 100%;
+  border-radius: 9px;
+  opacity: 1;
+  left: 0;
+  -webkit-transform: rotate(0deg);
+  -moz-transform: rotate(0deg);
+  -o-transform: rotate(0deg);
+  transform: rotate(0deg);
+  -webkit-transition: .25s ease-in-out;
+  -moz-transition: .25s ease-in-out;
+  -o-transition: .25s ease-in-out;
+  transition: .25s ease-in-out;
+}
+
+.animated-icon span {
+  background: #f3e5f5;
+}
+
+.animated-icon span:nth-child(1) {
+  top: 0px;
+  -webkit-transform-origin: left center;
+  -moz-transform-origin: left center;
+  -o-transform-origin: left center;
+  transform-origin: left center;
+}
+
+.animated-icon span:nth-child(2) {
+  top: 10px;
+  -webkit-transform-origin: left center;
+  -moz-transform-origin: left center;
+  -o-transform-origin: left center;
+  transform-origin: left center;
+}
+
+.animated-icon span:nth-child(3) {
+  top: 20px;
+  -webkit-transform-origin: left center;
+  -moz-transform-origin: left center;
+  -o-transform-origin: left center;
+  transform-origin: left center;
+}
+
+.animated-icon.open span:nth-child(1) {
+  -webkit-transform: rotate(45deg);
+  -moz-transform: rotate(45deg);
+  -o-transform: rotate(45deg);
+  transform: rotate(45deg);
+  top: 0px;
+  left: 8px;
+}
+
+.animated-icon.open span:nth-child(2) {
+  width: 0%;
+  opacity: 0;
+}
+
+.animated-icon.open span:nth-child(3) {
+  -webkit-transform: rotate(-45deg);
+  -moz-transform: rotate(-45deg);
+  -o-transform: rotate(-45deg);
+  transform: rotate(-45deg);
+  top: 21px;
+  left: 8px;
+}
+button {border:none !important;}
+button:focus{outline: none;}
+
+.center {
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+  transform: translateX(-50%);
+  text-align: center;
+  vertical-align: middle;
+}
+
+/* == hamburger icon */
+.animated-icon span {
+  background: white;
+}
+
+
+/* == side nav blur */
+#mySidenav {
+  background-color: rgba(0, 0, 0, 0.5) !important;
+	backdrop-filter: blur(10px) !important;
+  z-index: 100;
+}
+
+/* Profile Icon */
+.profile-icon {
+  position: relative;
+  background: url('../../public/images/tb-icon.svg') no-repeat;
+  background-size: cover;
+  height: 100%;
+  width: auto;
+  margin-left: 45px;
+  height: 30px;
+  width: 30px;
+  border: 3px solid white;
+  border-radius: 100%;
+}
+
+.profile-username {
+  color: white;
+  font-weight: 600;
+  font-size: 0.8rem;
+  margin-left: -10px;
+}
+
+.sidenav-profile {
+  padding: 10px 35px;
+  /* border: 2px solid white; */
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 30px;
+  text-align: center;
+}
+
+/* == Login/Signup font weight */
+#mySidenav .login-btn,
+#mySidenav .signup-btn,
+#mySidenav .logout-btn {
+  font-weight: 600;
+}
+
+#mySidenav .logout-btn{
+  text-align: center;
+  margin-left: -20px;
+}
+
+#mySidenav .profile-link {
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+/* == login */
+#mySidenav a {
+  color: white;
+  margin-bottom: 0.5rem;
+  margin-left: 1rem;
+}
+
+/* == signup */
+#mySidenav .signup-btn {
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  margin-left: 16px;
+  background-color: var(--btn1);
+  border-radius: 30px;
+  color: var(--darktxt);
+}
+
+/* == all destination */
+#mySidenav a.alldes {
+  display: block;
+  margin: 0 auto;
+  width: -moz-fit-content;
+  width: fit-content;
+  color: white;
+  background-color: var(--btn2);
+  border-radius: 30px;
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+/* == hr */
+#mySidenav hr {
+  display: block;
+  border: solid 2px white !important;
+	width: 90%;
+	margin: 1rem 0 1rem 0.9rem;
+}
+
+/* == paragraph */
+#mySidenav p {
+  color: var(--btn1);
+  font-size: 1rem;
+  font-weight: 500;
+  margin-left: 2rem;
+}
+
+/* == navbar width */
+.navbar {
+  padding-right: 1rem;
+  width: 100vw;
+}
+
+.navbar-toggler {
+  display: block !important;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.user-btns .logout-btn {
+  display: inline-block;
+  position: relative;
+  color: white;
+  text-shadow: 0 0 5px black;
+}
+
+.user-btns .profile-icon {
+  display: inline-block;
+  position: relative;
+  top: 8px;
+  margin-left: 10px;
+}
+
+/* == Change Navbar Color on Scroll */
+.fixed-top-transparent {
+  position:fixed;
+  top:0;
+  right:0;
+  left:0;
+  z-index:1030;
+  --bs-bg-opacity:1;
+  background-color:transparent;
+}
+
+.fixed-top-transparent-scrolled {
+  position:fixed;
+  top:0;
+  right:0;
+  left:0;
+  z-index:1030;
+  background-color: rgb(255, 234, 32, 0.4);
+	backdrop-filter: blur(10px) !important;
+	box-shadow: 0 5px 8px rgba(17, 17, 17, 0.5);
+  transition: background-color 0.5s linear;
+}
+
+/* Side Nav-bar Ends */
+
+/* NAVBAR ENDS */
+
+/* LANDING STARTS */
+
+/* == Background Image */
+#landing {
+  position: relative;
+  background: 
+              url("../../public/images/landing-model.webp") right -1.5rem bottom -2px no-repeat,
+              url("../../public/images/summer1.svg") right 16rem bottom no-repeat,
+              radial-gradient(circle at 100% 100%, var(--btn1), rgba(0,0,0,0) 50%) right bottom no-repeat, 
+              url("../../public/images/landing-bg.webp") left -1rem top no-repeat;
+	background-size:
+              auto 40%,
+              auto 20%,
+              auto auto,
+              auto 100vh;
+  height: 100vh;
+}
+
+
+/* == header div */
+#landing > div {
+  position: absolute;
+  width: inherit;
+  margin: 5rem 0 0 2rem;
+  padding-right: 3rem;
+  color: white;
+	text-shadow: 0 0 3px rgba(0, 0, 0, 1.0), 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+/* == header */
+.header h1 {
+  font-weight: 900;
+}
+
+/* == subtitle */
+.header p {
+  padding-right: 5rem;
+  line-height: 1rem;
+}
+
+/* Top Destination Starts */
+
+div.topdes {
+  display: flex;
+  justify-content: center;
+}
+
+/* == Top Destination image */
+img.topdes {
+  width: 150px;
+  height: 150px;
+  border: 5px solid white;
+  border-radius: 100%;
+  object-fit: cover;
+}
+
+/* == nav buttons */
+.topdes .nav a {
+  width: 80px;
+  height: auto;
+}
+
+/* == description */
+.topdes > h3 {
+  display: none;
+}
+
+.topdes .desc h3 {
+  font-size: 0.8rem;
+  font-style: italic;
+}
+
+.topdes .desc .desname {
+  font-family: var(--special);
+  color: var(--btn1);
+  font-size: 2rem;
+  margin-bottom: 0;
+  line-height: 2rem;
+}
+
+.topdes .desc .desloc {
+  font-size: 0.7rem;
+}
+
+.prev-next {
+  position: absolute !important;
+  bottom: -2rem;
+}
+
+/* Top Destination Ends */
+
+/* Travel Plan Starts */
+
+/* == How do you plan to travel? */
+.plan h3 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  text-shadow: 0 0 2px black, 0 0 2px black, 0 0 5px black
+}
+
+/* == plans */
+.plan a {
+  text-decoration: none;
+  color: var(--btn1);
+  font-family: var(--special);
+  font-size: 1.2rem;
+}
+
+/* == arrows */
+.plan a img {
+  height: 1.2rem;
+  width: auto;
+}
+
+/* Travel Plan Ends */
+
+/* LANDING ENDS */
+
+/* BOTTOM PAGE STARTS */
+
+#bottom {
+  display: flex;
+  flex-wrap: wrap;
+  position: relative;
+  /* min-height: 1000px; */
+  height: auto;
+  width: auto;
+  padding: 0 12px;
+  transition: .1s;
+  -webkit-transition: .1s ease-in-out;
+  -moz-transition: .1s ease-in-out;
+  -o-transition: .1s ease-in-out;
+  transition: .1s ease-in-out;
+}
+
+#bottom > img:first-child {
+  position: absolute;
+  top: -100px;
+  right: -100px;
+  width: 150vw;
+  height: auto;
+  filter: drop-shadow(0px -15px 10px rgba(0, 0, 0, 0.3));
+}
+
+/* Explore | Experience | About DIV Properties */
+div#explore, div#experience, div#about {
+  position: relative;
+  margin: 0 20px 0 32px;
+  padding-bottom: 3rem;
+}
+
+/* == Explore | Experience | About Us*/
+#explore > h1, #experience > h1, #about > h1{
+  font-weight: 900;
+  font-size: 2rem;
+  color: var(--darktxt);
+  padding: 0;
+  margin-top: 5rem;
+}
+
+/* == Explore icon | Experience | About Us*/
+#explore > h1 img, #experience > h1 img, #about > h1 img {
+  width: 60px;
+  height: auto;
+}
+/* == Explore | Experience | About Us subtitle */
+#explore > p, #experience > p, #about > p {
+  padding: 0 60px 0 0;
+  line-height: 1.3rem;
+  font-size: 1.3rem;
+}
+
+/* Modal Starts */
+
+.modal-title {
+  font-family: var(--special) !important;
+  color: var(--btn1);
+}
+
+/* x button */
+img[alt="x"] {
+  transform: translateY(-5px);
+}
+
+/* == Modal Backdrop blur */
+div.modal {
+	background-color: rgba(0, 0, 0, 0.4) !important;
+	backdrop-filter: blur(10px) !important;
+}
+
+
+/* == Modal Dialogue blur */
+.blur .modal-content {
+	background-color: transparent;
+	backdrop-filter: blur(20px);
+	border: transparent;
+}
+
+/* Modal Content Text color */
+.blur .modal-content p, .blur .modal-content span, .blur .modal-content h2, .blur .modal-content h3, .blur .modal-content h5 {
+	color: white;
+}
+
+/* == Remove Modal Footer Top Border */
+.blur .modal-footer {
+	border: none;
+}
+
+/* == Modal close button */
+.close {
+  background: none;
+  font-size: 2rem;
+}
+
+
+
+/* Modal Ends */
+
+
+/* BOTTOM PAGE ENDS */
+
+
+/* EXPLORE STARTS */
+
+/* == Explore Modal Images */
+.explore-modal-images img {
+  padding-bottom: 1rem;
+  filter: drop-shadow(0 0 10px white);
+}
+
+/* Pagination (EXPLORE | EXPERIENCE ) Starts */
+.pagination, .pagination2 {
+  display: block;
+  margin: 1em auto 0 auto;
+  transform: translateX(-6px);
+  text-align: center;
+  
+  &:after {
+    content: '';
+    clear: both;
+  }
+}
+
+
+
+/* Treak pagination for experience position */
+.pagination2 {
+  margin-right: 3rem;
+}
+
+.pagination-button,
+.pagination2-button {
+  display: inline-block;
+  padding: 6px 10px;
+  margin: 0 5px;
+  width: 40px;
+  height: 40px;
+  border: 3px solid var(--btn1);
+  border-radius: 25px;
+  background-color: white;
+  color: var(--darktxt);
+  cursor: pointer;
+  font-weight: 700;
+  transition: background-color 0.1s, color 0.1s;
+}
+
+.pagination-button:hover,
+.pagination2-button:hover {
+  background-color: var(--btn2);
+  border-color: var(--btn2);
+  color: white;
+}
+
+.pagination-button.active,
+.pagination2-button.active {
+  background-color: var(--btn1);
+  /* border-color: #bbb; */
+  color: var(--darktxt);
+  font-weight: 900;
+}
+
+.pagination-button:first-of-type,
+.pagination2-button:first-of-type {
+  border-radius: 18px 0 0 18px;
+}
+
+.pagination-button:last-of-type,
+.pagination2-button:last-of-type {
+  border-radius: 0 18px 18px 0;
+}
+
+
+/* arbitrary styles */
+.heading { text-align: center; max-width: 500px; margin: 20px auto; }
+
+
+
+/* EXPLORE */
+.explore-images {
+  position: relative;
+  width: 100%;
+  height: 150px;
+  margin: 10px;
+}
+
+.explore-images img {
+  position: absolute;
+  width: 100%;
+  height: inherit;
+  object-fit: cover;
+  border-radius: 15px;
+  top: 0;
+}
+
+.explore-images .name, [class$="modal-name"] {
+  position: absolute;
+  margin-left: 20px;
+  z-index: 1;
+  font-family: var(--special);
+  color: var(--btn1) !important;
+  font-size: 1.7rem;
+  text-shadow: 0 0 2px black, 0 0 5px black, 0 0 10px white;
+}
+
+/* == Modal package */
+.modal-package {
+  text-decoration: none;
+  display: inline-block;
+  color: white;
+  font-size: 1rem;
+  font-weight: 700;
+  background-color: var(--btn2);
+  padding: 0.5rem 1rem;
+  margin-left: 1rem;
+  border-radius: 25px;
+  text-align: center;
+}
+/* Pagination (EXPLORE) Ends */
+
+/* EXPLORE ENDS */
+
+/* EXPERIENCE STARTS */
+
+/* == Experience icon */
+#experience h1 img {
+  width: 60px;
+  height: auto;
+}
+
+/* Experience Loop */
+.experience-loop {
+  display: block;
+  width: 100%;
+  padding: 1em 2em;
+  margin: 1em auto;
+  border: 1px solid #ddd;
+  background-color: #ededed;
+}
+
+/* comment box */
+.experience-loop {
+  border-radius: 5px;
+  background-color: var(--blue2);
+}
+
+div.rating {
+  display: flex;
+  justify-content: space-between !important;
+  padding: 0;
+}
+
+/* Commenter */
+.experience-loop .head .name p {
+  font-size: 1rem;
+  font-weight: 500;
+  font-family: var(--special);
+  margin-bottom: 0;
+}
+
+/* Rating */
+.experience-loop .head .rating img {
+  height: 1rem;
+  width: auto;
+  filter: drop-shadow(0px 0px 2px rgba(0, 0, 0, 0.5));
+  margin-left: auto;
+}
+
+/* body paragraphs */
+.experience-loop .body p:not(:nth-child(2)) {
+  margin-bottom: 0;
+}
+
+.experience-loop .body p:not(:last-child) {
+  font-size: 0.8rem;
+}
+
+.experience-loop .body p.package {
+  font-weight: 600;
+}
+
+/* Comment Starts */
+
+div.experience-loop .body {
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+div.experience-loop .body p.collapse:not(.show) {
+  /* height: 42px !important; */
+  width: 100% !important;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+
+div.experience-loop .body p.collapsing {
+  min-height: 42px !important;
+}
+
+div.experience-loop .body a.collapsed:after {
+  content: '+ Read More';
+  font-weight: 600;
+}
+
+div.experience-loop .body a.collapsed {
+  text-decoration: none;
+}
+
+div.experience-loop .body a:not(.collapsed):after {
+  content: '- Read Less';
+  font-weight: 600;
+}
+
+div.experience-loop .body a:not(.collapsed) {
+  text-decoration: none;
+}
+
+/* Comment Ends */
+
+/* EXPERIENCE ENDS */
+
+/* ABOUT STARTS */
+
+#about div.message {
+  padding-left: 0;
+  padding-right: 1.8rem;
+}
+
+#about .message p {
+  font-size: 0.8rem;
+  text-align: justify;
+}
+
+/* prompt message */
+#about .message p span {
+  font-style: italic;
+}
+
+/* prompt */
+#about .message > a span {
+  display: block;
+  text-align: center;
+  font-size: 1rem;
+  font-weight: 700;
+  color: white;
+  background-color: var(--btn2);
+  border-radius: 10px;
+  padding: 0.5rem 0.8rem;
+  margin: 0 auto 1rem auto;
+}
+
+#about a {
+  text-decoration: none !important;
+}
+
+/* == Message styling */
+#about .message img.profile-pic {
+  position: relative;
+  float: right;
+  margin: 10px;
+  -webkit-shape-outside:circle();
+  shape-outside: circle();
+  width: 130px;
+  height: auto;
+  border-radius: 50%;
+  border: 5px solid white;
+  filter: drop-shadow(0 0 10px rgba(0,0,0, 0.5));
+}
+
+/* == Contacts text */
+#about .contacts a {
+  display: flex;
+  text-decoration: none;
+  background-color: white;
+  color: var(--darktxt);
+  font-size: 0.8rem;
+  font-weight: 500;
+  border-radius: 25px;
+  filter: drop-shadow(0 0 3px black);
+  padding: 0.3rem 0.5rem;
+  margin: 0.8rem 0.1rem 0 0.2rem;
+  align-items: center;
+}
+
+/* Contacts icons */
+#about .contacts a img {
+  height: 0.8rem;
+  width: auto;
+  margin-right: 3px;
+}
+
+/* Contacts Alignment */
+#about .contacts {
+  display: flex;
+  flex-wrap: wrap;
+  width: inherit;
+  justify-content: space-evenly;
+  /* margin-bottom: 4rem; */
+  padding: 0 2rem 0 0;
+}
+/* ABOUT ENDS */
+
+/* Prefooter */
+div.prefooter {
+  background-color: var(--blue2);
+  color: var(--blue3);
+  text-align: center;
+  padding: 2rem 0;
+}
+
+div.prefooter > div:not(:last-child),
+div.prefooter .row div:not(:last-child) {
+  margin-bottom: 10px;
+}
+
+
+div.prefooter img {
+  height: 1rem;
+  width: auto;
+  margin-right: 5px;
+}
+
+div.prefooter a {
+  text-decoration: none;
+  color: var(--blue3);
+}
+
+div.prefooter a:hover {
+  text-decoration: underline;
+}
+
+div.prefooter h4 {
+  font-weight: 600;
+}
+
+div.prefooter p {
+  margin-bottom: 0;
+}
+
+/* == Footer */
+footer {
+  color: var(--darktxt);
+  background-color: white;
+  padding: 1.5rem 1.5rem 2rem 1.5rem;
+  font-size: 0.8rem;
+  line-height: 0.2rem;
+  font-weight: 700;
+  text-align: center;
+}
+
+footer hr {
+  border-style: solid;
+  border-color: var(--darktxt);
+  border-radius: 5px;
+  opacity: 1;
+  border-width: 2px;
+  margin: 0 auto;
+  width: 50%;
+}
+
+/* Preview Destination Modal Starts */
+
+.modal-body {
+  padding: 30px;
+}
+
+.modal-body table {
+  margin-top: 50px;
+}
+
+/* == Headers */
+.modal-body h2 {
+  color: var(--btn1) !important;
+}
+
+/* == Days */
+.modal-body h6 {
+  margin-top: 10px;
+  color: var(--btn2);
+  font-weight: 700;
+}
+
+.modal-body .inclusion,
+.modal-body .exclusion {
+  border-top: 1px solid var(--blue1);
+  padding-top: 10px;
+}
+
+/* == Table Header */
+thead th {
+  color: var(--btn1) !important;
+}
+
+/* == Carousel images */
+.carousel img {
+  border-radius: 10px;
+  height: 180px;
+  width: auto;
+}
+
+/* == Carousel Body */
+.carousel {
+  border-radius: 10px;
+  filter: drop-shadow(0 0 3px white);
+  margin-bottom: 20px;
+  
+}
+
+/* == Carousel Caption */
+.carousel-caption {
+  padding: 0;
+}
+
+/* Preview Destination Modal Ends */
+
+/* Form Error Starts */
+div[class$="-error"] {
+  color: red;
+  font-weight: 700;
+  padding: 2px 10px;
+  margin: 3px;
+  border-radius: 10px;
+  text-shadow: 0 0 2px white, 0 0 5px white, 0 0 10px white, 0 0 20px white, 0 0 20px white, 0 0 20px white, 0 0 30px white;
+  /* background-color: rgb(255, 0, 0); */
+  font-size: 0.8rem;
+}
+
+.pointer {
+  cursor: pointer;
+}
+
+/* The pulse animation */
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  70% {
+    transform: scale(0.8);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.pointer:active {
+  animation: pulse 0.6s ease;
+}
+
+.tp-img {
+  width: 100%;
+  border-radius: 10px;
+  margin-bottom: 10px;
+}
+
+.page-toggle {
+  margin: 1rem 0 0 -0.2rem;
+  display: flex;
+  justify-content: center;
+}
+
+/* Form Error Ends */
+
+
+@media (min-width: 992px) {
+    /* Select the scrollbar track */
+  ::-webkit-scrollbar {
+    animation: hideScrollBar 2s linear forwards;
+    -webkit-border-radius: 5px !important;
+  }
+
+  /* Select the scrollbar thumb */
+  ::-webkit-scrollbar-thumb {
+    background-color: rgba(255, 255, 255, 0.5); /* Set the color of the scrollbar thumb */
+    animation: hideScrollBar 2s linear forwards;
+  }
+
+  /* Select the scrollbar thumb on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background-color: white; /* Set the color of the scrollbar thumb on hover */
+    animation: hideScrollBar 2s linear forwards;
+  }
+
+}

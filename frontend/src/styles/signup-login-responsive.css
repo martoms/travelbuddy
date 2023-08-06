@@ -1,0 +1,132 @@
+
+/* TABLET SCREEN */
+@media (min-width: 768px) {
+
+    /* Welcome Message */
+    #signup > div > h1,
+    #login > div > h1 {
+        margin-top: 6rem !important;
+        font-size: 2.5rem;
+    }
+
+    #signup form {
+        height: calc(100vh - 300px) !important;
+    }
+
+    /* Signup Form Background */
+    #signup form,
+    #login form {
+        width: 70%;
+        margin: auto;
+    }
+
+}
+
+/* SMALL DESKTOP */
+@media (min-width: 992px) {
+
+    /* == Page Background */
+    div#signup.page {
+        background: url('../../public/images/signup.webp') left bottom no-repeat !important;
+    }
+
+    div#login.page {
+        background: url('../../public/images/login.webp') left bottom no-repeat !important;
+        background-size: cover !important;
+    }
+
+    /* Welcome Message */
+    #signup > div > h1,
+    #login > div > h1 {
+        text-align: left;
+        margin-left: 2.3rem;
+    }
+
+    #signup form {
+        max-height: calc(100vh - 150px) !important;
+    }
+
+    /* Signup Form Background */
+    #signup form,
+    #login form {
+        margin-top: -2.5rem;
+        width: 35%;
+        margin-left: auto !important;
+        margin-right: 1.5rem;
+    }
+
+    #signup form > h1:first-child,
+    #login form > h1:first-child {
+        font-size: 1.5rem;
+    }
+
+    /* Address */
+    #signup div.region,
+    #signup div.province,
+    #signup div.city,
+    #signup div.barangay {
+        width: 110% !important;
+    }
+
+    /* Region | City */
+    #signup div.region,
+    #signup div.city {
+        float: none !important;
+    }
+
+    /* Province | Barangay */
+    #signup div.province,
+    #signup div.barangay {
+        float: none !important;
+    }
+
+    .barangay, .province {
+        margin-top: 10px;
+    }
+}
+
+/* LARGE DESKTOP */
+@media (min-width: 1200px) {
+
+    /* == Page Background */
+    div#signup.page {
+        background: url('../../public/images/signup.webp') left bottom no-repeat !important;
+        background-size: cover !important;
+    }
+
+    /* Welcome Message */
+    #signup > div > h1,
+    #login > div > h1 {
+        margin-left: 6.5rem !important;
+        padding-left: 0 !important;
+    }
+
+    /* Signup Form Background */
+    #signup form,
+    #login form {
+        width: 30%;
+        margin-right: 5rem !important;
+        overflow-x: hidden;
+    }
+
+    /* Address */
+    #signup div.region,
+    #signup div.province,
+    #signup div.city,
+    #signup div.barangay {
+        width: 115% !important;
+    }
+    
+    #signup form {
+        height: auto !important;
+    }
+   
+    /* Address */
+    #signup div.region,
+    #signup div.province,
+    #signup div.city,
+    #signup div.barangay {
+        width: 157% !important;
+    }
+    
+}

@@ -1,0 +1,556 @@
+/* TABLET */
+@media (min-width: 768px) {
+
+    div#explore, div#experience, div#about {
+      margin: 0 20px 0 0;
+    }
+
+    .page-toggle {
+      margin: 1rem 0 0 0.7rem;
+    }
+
+    /* == Background Image */
+    #landing {
+    position: relative;
+    background: 
+                url("../../public/images/landing-model.webp") right -2rem bottom -2px no-repeat,
+                url("../../public/images/summer1.svg") right 20rem bottom no-repeat,
+                radial-gradient(circle at 100% 100%, var(--btn1), rgba(0,0,0,0) 55%) right bottom no-repeat, 
+                url("../../public/images/landing-bg.webp") left -1rem top no-repeat !important;
+    background-size:
+                auto 50%,
+                auto 38%,
+                auto auto,
+                auto 100vh !important;
+    height: calc(100vh - 80px) !important;
+  }
+
+  /* Main Navbar Items */
+  .nav-item a, .nav-item a:visited, .nav-item a:active {
+    color: white;
+    text-decoration: none;
+    padding: 10px;
+    cursor: pointer;
+    font-size: 1.7vw;
+    text-shadow: 0 0 3px black;
+  }
+
+  /* Dropdown Starts */
+  .dropdown {
+    position: relative;
+  }
+
+  .dropdown:hover .dropdown-content {
+    display: block;
+  }
+
+  .nav-item a:hover {
+    filter: drop-shadow(0 0 5px var(--btn1));
+    text-shadow: none;
+  }
+
+  .dropdown > a::after {
+    content: url('../../public/images/dropdown-nav.svg');
+    padding-left: 5px;
+    filter: drop-shadow(0 0 3px black);
+  }
+
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(20px) !important;
+    border-radius: 10px;
+    width: 15vw
+  }
+
+  .dropdown-content a {
+    text-align: left;
+    display: block;
+  }
+
+  .dropdown-content a:hover {
+    color: white;
+    text-decoration: none;
+    cursor: pointer;
+    font-size: 1.8vw;
+    text-shadow: 0 0 3px black;
+  }
+
+  .dropdown-content a:not(:last-child) {
+    padding-bottom: 0;
+  }
+
+  /* Dropdown Ends */
+
+
+  /* User Buttons Start */
+
+  .user-btns a {
+    text-decoration: none;
+    padding: 5px;
+    font-weight: 600;
+  }
+
+  /* == login */
+  .user-btns .login {
+    color: white;
+    margin-bottom: 0.5rem;
+    margin-right: -15px;
+    border-style: solid none solid solid;
+    border-color: white transparent white white;
+    border-width: 3px 0 3px 3px;
+    border-radius: 30px 0 0 30px;
+    padding-left: 10px;
+    padding-right: 25px;
+  }
+
+  /* == signup */
+  .user-btns .signup {
+    padding: 0.5rem 1rem;
+    margin-left: -5px;
+    background-color: var(--btn1);
+    border-radius: 30px;
+    color: var(--darktxt);
+  }
+
+  /* User Buttons End */
+
+
+  /* Top Destination Starts */
+  #landing > div {
+    padding-right: 0;
+  }
+
+  div.topdes {
+    justify-content: flex-end !important;
+  }
+
+  div.topdes > div {
+    display: flex !important;
+    flex-wrap: wrap;
+    align-content: center !important;
+    margin-right: -1rem;
+    padding-right: 2rem;
+    background-color: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(20px);
+    padding-left: 50px;
+    height: 210px;
+    width: 60%;
+    border-radius: 150px 0 0 150px;
+  }
+
+  img.topdes {
+    margin-top: 8px;
+    margin-left: 15px;
+  }
+
+  .topdes > h3 {
+    display: block !important;
+    font-weight: 700;
+    text-align: end;
+    padding-right: 2rem;
+  }
+  
+  /* == description */
+  .topdes > div div.desc h3 {
+    display: none;
+    /* font-size: 1rem !important; */
+  }
+
+  .topdes .desc .desloc {
+    font-size: 1rem !important;
+  }
+
+  .topdes .nav a {
+    margin-right: 30px;
+  }
+
+  .topdes .nav a img {
+    height: 40px;
+    width: auto;
+  }
+
+  .prev-next {
+    position: absolute !important;
+    bottom: 0;
+  }
+
+  /* Top Destination Ends */
+
+  /* == How do you plan to travel? */
+  .plan h3 {
+    font-size: 1.8rem !important;
+  }
+
+  /* == plans */
+  .plan a {
+    font-size: 2.2rem !important;
+  }
+
+  /* == arrows */
+  .plan a img {
+    height: 2.8rem !important;
+  }
+
+  /* Bottom Page Image Transition */
+  #bottom > img:first-child {
+    display: none;
+  }
+
+  /* Bottom Pages Toggles Start*/
+
+  /* Position at bottom */
+  div.bottom-btns {
+    display: flex;
+    justify-content: space-between;
+    position: absolute;
+    top: -50px;
+    left: 1rem;
+  }
+
+  /* Text style -Active */
+  div.bottom-btns div.active h1 {
+    transform: translateX(-10px);
+    font-weight: 900;
+    font-size: 1.2rem;
+    color: var(--darktxt);
+    padding: 0;
+    text-shadow: none;
+  }
+
+  /* Inactive */
+  div.bottom-btns div.inactive h1 {
+    transform: translateX(-10px);
+    font-weight: 900;
+    font-size: 1.2rem;
+    color: white;
+    padding: 0;
+  }
+
+  /* Image style */
+  div.bottom-btns img {
+    width: 50px;
+    height: auto;
+  }
+
+  /* Active Buttons */
+  div.bottom-btns > div.active {
+    width: 30%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    padding-top: 8px;
+    padding-bottom: 0;
+    border-radius: 10px 10px 0 0;
+    height: 50px;
+  }
+
+  /* Inactive */
+  div.bottom-btns > div.inactive {
+    width: 30%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: transparent;
+    filter: drop-shadow(0 0 5px black);
+  }
+
+  /* Bottom Pages Toggles End */
+
+
+  /* Bottom Pages Intro */
+  div#explore > h1 + p,
+  div#experience > h1 + p,
+  div#about > h1 + p {
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: var(--darktxt);
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    margin-left: 3rem;
+  }
+
+  /* Explore and Experience Loops Container */
+  #explore > div.explore-loop-container,
+  #experience > div.experience-loop-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  /* Individual Loop Items */
+  #explore div.explore-loop,
+  #experience div.experience-loop {
+    width: 48% !important;
+    margin-top: 0;
+    margin-right: auto;
+  }
+
+  .explore-images {
+    width: 45%;
+  }
+
+  /* Experience Loop margin bottom */
+  #experience div.experience-loop {
+    margin-bottom: 13px;
+  }
+
+ 
+
+  /* About Us Profile Pic */
+  #about .message img.profile-pic {
+    position: relative;
+    float: right;
+    margin: 10px;
+    shape-outside: circle();
+    -webkit-shape-outside:circle();
+    width: 200px !important;
+    height: auto;
+    border-radius: 50%;
+    border: 5px solid white;
+    filter: drop-shadow(0 0 10px rgba(0,0,0, 0.5));
+  }
+
+  /* About Us Message */
+  #about .message {
+    width: 80%;
+    margin: 0 auto;
+  }
+
+  /* View All Destinations */
+  #about .message > span {
+    width: 80% !important;
+  }
+
+  /* Contacts */
+  #about .contacts {
+    margin: 0 auto;
+  }
+
+
+  .travel-plans {
+    margin-bottom: 2rem !important;
+  }
+
+  .prefooter {
+    padding-left: 2rem !important;
+    padding-right: 2rem !important;
+  }
+
+}
+
+
+/* SMALL DESKTOP */
+@media (min-width: 992px) {
+
+  /* == Background Image */
+  #landing {
+    position: relative;
+    background: 
+                url("../../public/images/landing-model-inverse.svg") left -1rem bottom -2px no-repeat,
+                url("../../public/images/summer1-inverse.svg") left 10rem bottom no-repeat,
+                radial-gradient(circle at 0% 100%, var(--btn1), rgba(0,0,0,0) 30%) right bottom no-repeat, 
+                url("../../public/images/landing-bg.webp") left top -3rem no-repeat !important;
+    background-size:
+                auto 50%,
+                auto 38%,
+                auto auto,
+                100vw auto !important;
+    height: calc(100vh - 80px) !important;
+  }
+
+  /* Main Navbar Items */
+  .nav-item a, .nav-item a:visited, .nav-item a:active {
+    font-size: 1.2vw !important;
+  }
+
+  /* == header */
+  .header h1 {
+    font-size: 1.5rem;
+    line-height: 0.8rem;
+  }
+
+  /* == subtitle */
+  .header p {
+    font-size: 0.8rem;
+  }
+
+  /* Top Destination Starts */
+
+  div.topdes {
+    margin-top: -4rem !important;
+  }
+
+  div.topdes > div {
+    height: 170px !important;
+    width: 40%;
+  }
+
+  img.topdes {
+    margin-top: 10px;
+    height: 120px !important;
+    width: 120px !important;
+  }
+
+  .topdes > h3 {
+    padding-right: 3rem;
+    font-size: 1rem;
+  }
+  
+  .topdes .desc .desloc {
+    font-size: 0.8rem !important;
+    padding-right: 2rem;
+  }
+
+  .topdes .nav a {
+    margin-right: 10px;
+  }
+
+  .topdes .nav a img {
+    height: 30px;
+  }
+
+  /* Top Destination Ends */
+
+
+  /* == How do you plan to travel? */
+
+  div.plan {
+    margin-top: 1rem !important;
+    margin-left: -2rem;
+    text-align: right;
+  }
+
+  .plan h3 {
+    font-size: 1.2rem !important;
+  }
+
+  /* == plans */
+  .plan a {
+    font-size: 1.5rem !important;
+  }
+
+  /* == arrows */
+  .plan a img {
+    height: 2rem !important;
+  }
+
+  
+  h1.row {
+    display: flex;
+    align-items: center;
+  }
+
+  /* Bottom Pages Button Position */
+  div.bottom-btns {
+    top: -40px;
+  }
+
+  .explore-btn:hover, .experience-btn:hover, .about-btn:hover {
+    cursor: pointer;
+  }
+
+  /* Explore and Experience Loops Container */
+  #explore > div.explore-loop-container,
+  #experience > div.experience-loop-container {
+    width: 80%;
+  }
+
+  div.modal-dialog {
+    max-width: 90%!important;
+  }
+
+  .prefooter {
+    font-size: 0.8rem !important;
+  }
+
+  .prefooter h4 {
+    font-size: 1rem;
+  }
+
+  div.prefooter img {
+    height: 0.8rem !important;
+    width: auto;
+    margin-right: 5px;
+    transform: translateY(-1px);
+  }
+
+} 
+
+/* LARGE DESKTOP */
+@media (min-width: 1200px) {
+
+  #navbar2 {
+    padding-left: 6.5rem !important;
+    padding-right: 6.5rem !important;
+  }
+
+  #landing > .row {
+    padding-right: 5.5rem !important;
+  }
+
+  #bottom {
+    padding-left: 5.5rem !important;
+    padding-right: 5.5rem !important;
+  }
+
+  /* == header */
+  .header h1 {
+    margin-top: 2rem;
+    font-size: 1.8rem;
+    line-height: 1rem;
+    margin-left: 4.5rem;
+    padding-left: 0;
+  }
+
+  /* == subtitle */
+  .header p {
+    font-size: 1rem;
+    padding: 0;
+    margin-left: 4.5rem;
+  }
+
+  div.topdes  {
+    margin-top: 1rem !important;
+  }
+
+  div.topdes > div {
+    height: 180px !important;
+    width: 35%;
+  }
+
+  .topdes .nav a {
+    margin-right: -10px;
+  }
+
+  .desname {
+    padding-right: 3.4rem !important;
+  }
+
+  div.topdes > div {
+    margin-right: -7rem !important;
+    padding-right: 3rem !important;
+  }
+
+  .topdes > h3 {
+    padding-right: 0 !important;
+    margin-right: 3rem !important;
+    font-size: 1rem;
+  }
+  
+  .topdes .desc .desloc {
+    font-size: 0.8rem !important;
+    padding-right: 5.5rem !important;
+  }
+
+  img.topdes {
+    margin-top: auto !important;
+    height: 140px !important;
+    width: 140px !important;
+  }
+}

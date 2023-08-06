@@ -1,0 +1,13 @@
+<svg id="more" xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48">
+  <g id="invisible_box" data-name="invisible box">
+    <rect id="Rectangle_39" data-name="Rectangle 39" width="48" height="48" fill="none"/>
+    <rect id="Rectangle_40" data-name="Rectangle 40" width="48" height="48" fill="none"/>
+    <rect id="Rectangle_41" data-name="Rectangle 41" width="48" height="48" fill="none"/>
+  </g>
+  <g id="icons_Q2" data-name="icons Q2">
+    <g id="Group_125" data-name="Group 125">
+      <path id="Path_259" data-name="Path 259" d="M24,2A21.9,21.9,0,1,0,39.586,8.414,22,22,0,0,0,24,2Zm0,40A18,18,0,1,1,42,24,18,18,0,0,1,24,42Z" fill="#fff"/>
+      <path id="Path_260" data-name="Path 260" d="M34,22H26V14a2,2,0,0,0-4,0v8H14a2,2,0,0,0,0,4h8v8a2,2,0,0,0,4,0V26h8a2,2,0,0,0,0-4Z" fill="#fff"/>
+    </g>
+  </g>
+</svg>

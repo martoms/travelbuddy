@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="180" height="64" viewBox="0 0 180 64">
+  <g id="solo" transform="translate(-476 -432)">
+    <g id="Rectangle_37" data-name="Rectangle 37" transform="translate(479 435)" fill="#fff" stroke="#4d7080" stroke-width="3">
+      <rect width="174" height="58" rx="29" stroke="none"/>
+      <rect x="-1.5" y="-1.5" width="177" height="61" rx="30.5" fill="none"/>
+    </g>
+    <g id="Group_123" data-name="Group 123" transform="translate(10.849 4)">
+      <path id="Icon_open-person" data-name="Icon open-person" d="M18,0C13.05,0,9,5.04,9,11.25S13.05,22.5,18,22.5s9-5.04,9-11.25S22.95,0,18,0ZM8.6,22.5a9.009,9.009,0,0,0-8.6,9V36H36V31.5a8.978,8.978,0,0,0-8.6-9A12.638,12.638,0,0,1,18,27,12.638,12.638,0,0,1,8.6,22.5Z" transform="translate(499.085 442)" fill="#4e7180"/>
+      <text id="solo-2" data-name="solo" transform="translate(544 465)" fill="#4e7180" font-size="15" font-family="Gontserrat-Medium, Montserrat" font-weight="500"><tspan x="0" y="0">solo</tspan></text>
+    </g>
+  </g>
+</svg>
