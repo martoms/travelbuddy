@@ -11,25 +11,25 @@ const Title = () => {
   const getTitleFromRoute = (path) => {
     switch (path) {
         case '/':
-          return 'TravelBuds | Home';
+          return 'TravelBuddy | Home';
         case '/users/signup':
-          return 'TravelBuds | Signup';
+          return 'TravelBuddy | Signup';
         case '/users/login':
-          return 'TravelBuds | Login';
+          return 'TravelBuddy | Login';
         case '/destinations':
-          return 'TravelBuds | Destinations';
+          return 'TravelBuddy | Destinations';
         case '/bookings/with-guests':
-          return 'TravelBuds | Booking with Guests';
+          return 'TravelBuddy | Booking with Guests';
         case '/bookings/with-friends':
-          return 'TravelBuds | Booking with Friends';
+          return 'TravelBuddy | Booking with Friends';
         case '/bookings/solo':
-          return 'TravelBuds | Booking Solo';
+          return 'TravelBuddy | Booking Solo';
         case '/users/profile':
-          return 'TravelBuds | Profile';
+          return 'TravelBuddy | Profile';
         case '/users/admin':
-          return 'TravelBuds | Admin';
+          return 'TravelBuddy | Admin';
         default:
-          return 'TravelBuds';
+          return 'TravelBuddy';
       }
   };
 
