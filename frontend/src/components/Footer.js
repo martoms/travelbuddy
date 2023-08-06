@@ -38,7 +38,7 @@ const Footer = () => {
                         </div>
                         <div className="col-12 col-lg-7 contacts">
                             <h4>Contacts</h4>
-                            <p><img src="/images/f-phone.svg" alt="phone" />+639105583385</p>
+                            <p><img src="/images/f-phone.svg" alt="phone" />+639991130968</p>
                             <p><img src="/images/f-email.svg" alt="phone" />tomataomarjohn@gmail.com</p>
                         </div>
                     </div>
