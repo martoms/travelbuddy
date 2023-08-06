@@ -47,7 +47,7 @@ const Footer = () => {
 
 
             <footer>
-                <p>TravelBuds</p>
+                <p>Travel Buddy</p>
                 <p>Marjohn Tomatao | Full Stack Web Developer | MERN Stack</p>
                 <p>Copyright &copy; 2023. All Rights Reserved</p>
                 <hr />
