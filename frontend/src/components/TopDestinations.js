@@ -16,10 +16,15 @@ const TopDestinations = () => {
         const AllTopDestinations = topDestinations.map(topDestination => {
 
             const { destination, destinationTourPackages } =  topDestination;
+
+            
+
             let packageDurations = destinationTourPackages.map(destinationTourPackage => {
+                
                 return destinationTourPackage.packageDuration;
             })
-            packageDurations.pop()
+
+            // packageDurations.pop()
             packageDurations = packageDurations.join(' | ')
 
             return (

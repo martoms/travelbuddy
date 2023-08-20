@@ -7,7 +7,7 @@ const index_get = async (req, res) => {
     
     try {
 
-        let topDestinations = await TourPackage.find({ isTopDestination: true });
+        let topDestinations = await TourPackage.find({ isTopDestination: true, travelPlan:"with-guests" });
 
         topDestinations = topDestinations.reduce((acc, tourPackage) => {
             const destination = tourPackage.destination;

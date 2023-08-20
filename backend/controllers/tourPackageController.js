@@ -134,7 +134,10 @@ const setTopDestination_patch = async (req, res) => {
         );
       
         const topDestinations = await TourPackage.find(
-            { destination },
+            {
+                destination,
+                isActive : true
+            },
             { _id: 1, destination: 1, packageDuration: 1, isTopDestination: 1 }
         );
 

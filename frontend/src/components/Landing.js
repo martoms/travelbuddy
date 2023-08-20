@@ -1,7 +1,5 @@
 import { Link } from "react-router-dom";
 import TopDestinations from "./TopDestinations";
-import { useContext } from "react";
-import { AllContext } from "../context/AllContext";
 
 const Landing = () => {
 
